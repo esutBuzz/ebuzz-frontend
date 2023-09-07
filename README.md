@@ -1,2 +1,2 @@
 # ebuzz-frontend
-This is the frontend part of the ebuzz repository
+This is the frontend part of the ebuzz project
