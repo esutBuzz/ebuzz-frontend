@@ -1,0 +1,56 @@
+@import '../../App.scss';
+
+#form-input{
+    position: relative;
+    width: 100%;
+    height: calc($wk-height * 0.03);
+    display: flex;
+    align-items: flex-end;
+    background: $white;
+    border: 0.02em solid $black;
+    border-radius: $small-radius;
+    
+    input{
+        position: relative;
+        width: 100%;
+        height: 80%;
+        outline: none;
+        resize: none;
+        border: none;
+        border-radius: $small-radius;
+        font-size: $text;
+        padding: .5em 1em;
+        overflow: hidden;
+
+        &:focus-within ~ label{
+            transform: translateY(-1.3em);
+            font-size: $small-text;
+            padding: 0.3em;
+            color: $brown;
+        }
+    }
+
+    label{
+        position: absolute;
+        top: 23%;
+        left: 6%;
+        pointer-events: none;
+        transition: .3s ease all;
+        color: $gray;
+
+        &.active{
+            transform: translateY(-1.3em);
+            font-size: $small-text;
+            padding: 0.3em;
+            color: $brown;
+        }
+    }
+
+    i{
+        position: absolute;
+        top: 30%;
+        right: 5%;
+        color: $lt-gray;
+        cursor: pointer;
+    }
+}

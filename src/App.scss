@@ -1,3 +1,5 @@
+@import url('https://fonts.cdnfonts.com/css/inter');
+
 *,
 *::before,
 *::after{
@@ -15,7 +17,7 @@ $brown: #711500;
 $gray: #756969;
 $lt-gray: #DBD7DE;
 $red: #EE7070;
-$brwon-accent: #FFDFD8;
+$brown-accent: #FFDFD8;
 
 // variables
 
@@ -26,6 +28,7 @@ $wk-width: 100em;
 $radius: 50%;
 $border-radius: 1em;
 $small-radius: .5em;
-$text: 1.2em;
-$large-text: 2.5em;
+$text: 1em;
+$large-text: 3em;
 $extra-large-text: 14em;
+$font: 'Inter', sans-serif;
