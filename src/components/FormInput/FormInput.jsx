@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './FormInput.scss'
 
 
-export default function FormInput(type, title, id, pattern, maxLength) {
+export default function FormInput({type, title, id, pattern, maxLength, className}) {
     const [formState, setFormState] = useState({
         [id]: '',
     })
@@ -23,7 +23,7 @@ export default function FormInput(type, title, id, pattern, maxLength) {
     }
 
   return (
-    <span id='form-input'>
+    <span id='form-input' className={className}>
         <input
             type={type === 'password' && showPassword ? 'text' : type}
             name={id}

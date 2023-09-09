@@ -18,7 +18,7 @@ const PageContent = styled.main`
     justfy content: center;
 `
 
-export default function PageButton(title, id, className, link) {
+export default function PageButton({title, id, className, link}) {
     const location = useLocation()
     const isActive = location.pathname === link
 

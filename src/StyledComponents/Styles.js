@@ -9,7 +9,7 @@ const breakpoints = {
 export const devices = {
     mobile: `(max-width: ${breakpoints.mobile})`,
     tablet: `(max-width: ${breakpoints.tablet})`,
-    desktop: `(max-width: ${breakpoints.desktop})`
+    desktop: `(min-width: ${breakpoints.desktop})`
 }
 
 export const colors = {

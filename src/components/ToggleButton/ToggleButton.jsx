@@ -12,7 +12,7 @@ const TouchButton = styled.button`
     display: flex;
 `
 
-export default function ToggleButton(title, text, icon, onClick, className, children, image, isActive) {
+export default function ToggleButton({title, text, icon, onClick, className, children, image, isActive}) {
     return(
         <TouchButton onClick={onClick} className={`${className} ${isActive ? 'activated' : ''}`}>
             {icon && <i className={icon}></i>}

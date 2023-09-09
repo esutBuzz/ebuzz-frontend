@@ -7,7 +7,7 @@
     display: flex;
     align-items: flex-end;
     background: $white;
-    border: 0.02em solid $black;
+    border: 0.02em solid $gray;
     border-radius: $small-radius;
     
     input{
@@ -33,7 +33,7 @@
     label{
         position: absolute;
         top: 23%;
-        left: 6%;
+        left: 2%;
         pointer-events: none;
         transition: .3s ease all;
         color: $gray;
@@ -52,5 +52,9 @@
         right: 5%;
         color: $lt-gray;
         cursor: pointer;
+    }
+
+    &:focus-within{
+        border: 0.02em solid $brown;
     }
 }
