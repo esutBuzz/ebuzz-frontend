@@ -1,5 +1,5 @@
 import {styled} from 'styled-components'
-import { colors, values } from '../../StyledComponents/Styles'
+import { colors, devices, values } from '../../StyledComponents/Styles'
 
 export const LoginDisplay = styled.main`
     position: relative;
@@ -78,6 +78,10 @@ export const FormElement = styled.form`
             align-items: center;
             justify-content: center;
             align-self: center;
+
+            @media screen and ${devices.mobile}{
+                width: 80%;
+            }
         }
 
         p{
