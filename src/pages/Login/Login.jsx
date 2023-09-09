@@ -10,10 +10,10 @@ export default function Login() {
   return (
     <LoginDisplay>
         <FormElement action="">
-            <h1>
+            <h3>
                 <img src={icon} alt="E-BUZZ" />
                 E-BUZZ
-            </h1>
+            </h3>
 
             <section>
                 <h2>Log into your account</h2>

@@ -28,7 +28,7 @@ export const FormElement = styled.form`
     align-items: flex-start;
     padding: 1em;
     
-    h1{
+    h3{
         display: flex;
         align-items: center;
         justify-content: center;
@@ -45,7 +45,13 @@ export const FormElement = styled.form`
         display: flex;
         flex-direction: column;
         gap: 2em;
-        margin: 2em 0;
+        margin: 4em 0;
+
+        @media screen and ${devices.mobile}{
+            h2{
+                text-align: center;
+            }
+        }
 
         aside{
             position: relative;
