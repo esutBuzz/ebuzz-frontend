@@ -1,7 +1,7 @@
-import {styled} from 'styled-components'
-import { colors, devices, values } from '../../StyledComponents/Styles'
+import { styled } from "styled-components";
+import { values, devices, colors } from "./Styles";
 
-export const LoginDisplay = styled.main`
+export const OnboardingDisplay = styled.main`
     position: relative;
     width: ${values.width};
     height: ${values.height};
@@ -12,11 +12,15 @@ export const LoginDisplay = styled.main`
     gap: 2em;
     font-family: ${values.font};
 
-    img{
+    .image{
         position relative;
         width: 50%;
         height: 100%;
         object-fit: cover;
+
+        @media screen and ${devices.mobile}{
+            display: none;
+        }
     }
 `
 
@@ -36,6 +40,10 @@ export const FormElement = styled.form`
         img{
             position: relative;
             width: max-content;
+
+        }
+        @media screen and ${devices.mobile}{
+            align-self: center;
         }
     }
     
@@ -45,7 +53,8 @@ export const FormElement = styled.form`
         display: flex;
         flex-direction: column;
         gap: 2em;
-        margin: 4em 0;
+        margin: 3em 0 0 0;
+        color: ${colors.black};
 
         @media screen and ${devices.mobile}{
             h2{
@@ -74,7 +83,7 @@ export const FormElement = styled.form`
             }
         }
 
-        .login{
+        .submit{
             background: ${colors.brown};
             color: ${colors.white};
             width: 60%;
@@ -96,8 +105,9 @@ export const FormElement = styled.form`
             display: flex;
             align-items: center;
             justify-content: center;
+            margin: -2em 0 0 0;
 
-            .signup{
+            .onboard-btn{
                 color: ${colors.brown};
             }
         }

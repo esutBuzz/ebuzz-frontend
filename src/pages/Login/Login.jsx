@@ -1,4 +1,4 @@
-import { LoginDisplay, FormElement } from './LoginStyles'
+import { OnboardingDisplay, FormElement } from '../../StyledComponents/Onboarding'
 import image from '/images/login-img.svg'
 import icon from '/images/icon.svg'
 import FormInput from '../../components/FormInput/FormInput'
@@ -8,7 +8,7 @@ import ToggleButton from '../../components/ToggleButton/ToggleButton'
 
 export default function Login() {
   return (
-    <LoginDisplay>
+    <OnboardingDisplay>
         <FormElement action="">
             <h3>
                 <img src={icon} alt="E-BUZZ" />
@@ -32,21 +32,21 @@ export default function Login() {
 
                 <ToggleButton
                     text='Login'
-                    className='login'
+                    className='submit'
                 />
 
                 <p>
-                    Don't have an account?
+                    Already have an account?
                     <PageButton
                         link='/signup'
                         title='SignUp'
-                        className='signup'
+                        className='onboard-btn'
                     />
                 </p>
             </section>
         </FormElement>
 
-        <img src={image} alt="E-BUZZ login image" />
-    </LoginDisplay>
+        <img src={image} alt="E-BUZZ login image" className='image'/>
+    </OnboardingDisplay>
   )
 }
