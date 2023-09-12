@@ -32,7 +32,7 @@ export const values = {
     smallRadius: ".5em",
     text: "1em",
     smallText: ".5em",
-    largeText: "3em",
+    largeText: "2.5em",
     extraLargeText: "14em",
     font: 'Inter',
 }

@@ -1,11 +1,12 @@
+import { useState } from "react"
 import { styled } from "styled-components"
 import { devices, values } from "../../StyledComponents/Styles"
 import icon from '/images/icon.svg'
 import image from '/images/login-img.svg'
-import { useState } from "react"
 import UserRequest from "../../components/ForgotPasswordComponents/UserRequest"
 import OTPValidation from "../../components/ForgotPasswordComponents/OTPValidation"
 import ResetPassword from "../../components/ForgotPasswordComponents/ResetPassword"
+import Confirmation from "../../components/ForgotPasswordComponents/Confirmation"
 
 const ForgotDisplay = styled.main`
   position: relative;
@@ -47,6 +48,7 @@ const steps = [
   UserRequest,
   OTPValidation,
   ResetPassword,
+  Confirmation,
 ]
 
 export default function ForgotPassword() {

@@ -8,6 +8,8 @@ export default function UserRequest({showStep}) {
     function handleSubmit(e){
         e.preventDefault()
         showStep(1)
+
+        // for the proper validation, use react-querry
     }
 
   return (

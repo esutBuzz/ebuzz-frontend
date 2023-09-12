@@ -23,17 +23,6 @@ export const UserForm = styled.main`
         align-items: center;
         justify-content: center;
 
-        .submit-btn{
-            position: relative;
-            width: 60%;
-            padding: .7em;
-            background: ${colors.brown};
-            color: ${colors.white};
-
-            @media screen and ${devices.mobile}{
-                width: 100%;
-            }
-        }
         .page-btn{
             color: ${colors.brown};
             text-align: center;
@@ -86,6 +75,24 @@ export const UserForm = styled.main`
             .resend-btn{
                 color: ${colors.brown}
             }
+        }
+
+        //for reset password
+
+        #error{
+            color: ${colors.red}
+        }
+    }
+
+    .submit-btn{
+        position: relative;
+        width: 60%;
+        padding: .7em;
+        background: ${colors.brown};
+        color: ${colors.white};
+
+        @media screen and ${devices.mobile}{
+            width: 100%;
         }
     }
 `

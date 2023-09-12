@@ -7,6 +7,8 @@ export default function OTPValidation({showStep}) {
     function handleSubmit(e){
         e.preventDefault()
         showStep(2)
+
+        // for the proper validation, use react-querry
     }
 
   return (
