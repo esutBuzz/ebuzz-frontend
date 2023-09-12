@@ -8,8 +8,13 @@ const TouchButton = styled.button`
     font-size: ${values.text};
     font-family: ${values.font};
     background: transparent;
+    padding: .7em 1em;
     cursor: pointer;
     display: flex;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    border-radius: ${values.smallRadius};
 `
 
 export default function ToggleButton({title, text, icon, onClick, className, children, image, isActive}) {

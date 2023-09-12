@@ -26,7 +26,7 @@ export default function Login() {
                         <input type="checkbox" name="checkbox" id="checkbox" />
                         <label htmlFor="checkbox">Remember information</label>
                     </span>
-                    <PageButton title='Forgot Password?' className='forgot'/>
+                    <PageButton link='/forgot' title='Forgot Password?' className='forgot'/>
                 </aside>
 
 

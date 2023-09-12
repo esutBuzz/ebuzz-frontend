@@ -14,11 +14,12 @@ const PageContent = styled.main`
     outline: none;
     cursor: pointer;
     display: flex;
+    gap: 1em;
     align-items: center;
     justfy content: center;
 `
 
-export default function PageButton({title, id, className, link}) {
+export default function PageButton({title, icon, id, className, link}) {
     const location = useLocation()
     const isActive = location.pathname === link
 
@@ -28,6 +29,7 @@ export default function PageButton({title, id, className, link}) {
     
     return (
         <PageContent id={id} className={`${className} ${isActive ? 'activeLink' : ''}`} onClick={handleNavigate}>
+            {icon && <i className={icon}></i>}
             {title}
         </PageContent>
     )

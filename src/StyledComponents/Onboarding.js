@@ -14,7 +14,7 @@ export const OnboardingDisplay = styled.main`
 
     .image{
         position relative;
-        width: 50%;
+        width: 100%;
         height: 100%;
         object-fit: cover;
 
@@ -87,8 +87,6 @@ export const FormElement = styled.form`
             background: ${colors.brown};
             color: ${colors.white};
             width: 60%;
-            padding: .7em 1em;
-            border-radius: ${values.smallRadius};
             display: flex;
             align-items: center;
             justify-content: center;
