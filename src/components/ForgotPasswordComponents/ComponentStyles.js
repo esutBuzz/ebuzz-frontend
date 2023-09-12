@@ -34,5 +34,44 @@ export const UserForm = styled.main`
             color: ${colors.brown};
             text-align: center;
         }
+
+        //for OTP validation
+
+        .otp-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2em;
+
+            #otp{
+                position: relative;
+                height: calc(${values.wkHeight} * 0.02);
+                width: calc(${values.wkWidth} * 0.02);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align-center;
+                font-size: ${values.largeText};
+                border-radius: calc(${values.smallRadius} * 0.5);
+                outline: none;
+                border: 0.02em solid ${colors.gray};
+                font-family: ${values.font};
+                font-weight: 700;
+                padding: 0 .6em;
+                
+                &:focus{
+                    border: 0.02em solid ${colors.brown};
+                }
+            }
+        }
+
+        p{
+            display: flex;
+            align-items: center;
+
+            .resend-btn{
+                color: ${colors.brown}
+            }
+        }
     }
 `

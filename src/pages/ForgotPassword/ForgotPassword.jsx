@@ -4,6 +4,7 @@ import icon from '/images/icon.svg'
 import image from '/images/login-img.svg'
 import { useState } from "react"
 import UserRequest from "../../components/ForgotPasswordComponents/UserRequest"
+import OTPValidation from "../../components/ForgotPasswordComponents/OTPValidation"
 
 const ForgotDisplay = styled.main`
   position: relative;
@@ -41,8 +42,19 @@ const ForgotDisplay = styled.main`
   }
 `
 
+const steps = [
+  UserRequest,
+  OTPValidation,
+]
+
 export default function ForgotPassword() {
-  const [setContent, showSetContent] = useState(null)
+  const [currentStep, setCurrentStep] = useState(0)
+
+  function handleStepChange(step){
+    setCurrentStep(step)
+  }
+
+  const StepComponent = steps[currentStep]
 
   return (
     <ForgotDisplay>
@@ -52,34 +64,10 @@ export default function ForgotPassword() {
           E-BUZZ
         </h1>
 
-        {setContent ? (
-            <DisplayContent activeContent={setContent} />
-        ) : (
-          <>
-            <UserRequest showContent={showSetContent} />
-          </>
-        )}
-
+        <StepComponent showStep={handleStepChange} />
       </section>
 
       <img src={image} alt="Login image" id="log-img" />
     </ForgotDisplay>
   )
-}
-
-function DisplayContent(activeContent){
-
-  const getComponent = (components) => {
-    switch (components) {
-      case 1:
-        return <UserRequest />
-
-      default:
-        return null
-    }
-  }
-
-  return<>
-    {getComponent(activeContent)}
-  </>
 }
