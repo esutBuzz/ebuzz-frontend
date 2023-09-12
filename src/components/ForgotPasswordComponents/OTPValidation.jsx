@@ -6,7 +6,7 @@ export default function OTPValidation({showStep}) {
 
     function handleSubmit(e){
         e.preventDefault()
-        showStep(1)
+        showStep(2)
     }
 
   return (
@@ -20,6 +20,7 @@ export default function OTPValidation({showStep}) {
             <span className="otp-container">
                 {Array.from({ length: 4 }, (_, index) => (
                     <input
+                        key={index}
                         type="tel" 
                         name="tel"
                         id="otp"

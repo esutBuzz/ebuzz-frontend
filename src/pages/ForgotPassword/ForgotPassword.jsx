@@ -5,6 +5,7 @@ import image from '/images/login-img.svg'
 import { useState } from "react"
 import UserRequest from "../../components/ForgotPasswordComponents/UserRequest"
 import OTPValidation from "../../components/ForgotPasswordComponents/OTPValidation"
+import ResetPassword from "../../components/ForgotPasswordComponents/ResetPassword"
 
 const ForgotDisplay = styled.main`
   position: relative;
@@ -36,7 +37,7 @@ const ForgotDisplay = styled.main`
     width: 100%;
     height: 100%;
 
-    @media screen and ${devices.mobile}{
+    @media screen and ${devices.tablet}{
       display: none;
     }
   }
@@ -45,6 +46,7 @@ const ForgotDisplay = styled.main`
 const steps = [
   UserRequest,
   OTPValidation,
+  ResetPassword,
 ]
 
 export default function ForgotPassword() {

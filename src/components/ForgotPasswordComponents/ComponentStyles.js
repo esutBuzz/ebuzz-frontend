@@ -1,5 +1,5 @@
 import { styled } from "styled-components"
-import { values, colors } from "../../StyledComponents/Styles"
+import { values, colors, devices } from "../../StyledComponents/Styles"
 
 export const UserForm = styled.main`
     positon: relative;
@@ -29,6 +29,10 @@ export const UserForm = styled.main`
             padding: .7em;
             background: ${colors.brown};
             color: ${colors.white};
+
+            @media screen and ${devices.mobile}{
+                width: 100%;
+            }
         }
         .page-btn{
             color: ${colors.brown};
@@ -61,6 +65,16 @@ export const UserForm = styled.main`
                 
                 &:focus{
                     border: 0.02em solid ${colors.brown};
+                }
+                
+            }
+            
+            @media screen and ${devices.mobile}{
+                gap: .5em;
+                
+                #otp{
+                    width: calc(${values.wkWidth} * 0.015);
+                    padding: 0 0 0 .4em;
                 }
             }
         }

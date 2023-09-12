@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './FormInput.scss'
 
 
-export default function FormInput({type, title, id, pattern, maxLength, className}) {
+export default function FormInput({type, title, id, pattern, maxLength, minLength, className}) {
     const [formState, setFormState] = useState({
         [id]: '',
     })
@@ -32,6 +32,7 @@ export default function FormInput({type, title, id, pattern, maxLength, classNam
             onChange={handleChange}
             pattern={pattern}
             maxLength={maxLength}
+            minLength={minLength}
         />
         <label
             htmlFor={id}

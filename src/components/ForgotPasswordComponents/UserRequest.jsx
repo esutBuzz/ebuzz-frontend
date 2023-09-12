@@ -1,15 +1,12 @@
-// import { useNavigate } from "react-router-dom";
 import FormInput from "../FormInput/FormInput";
 import PageButton from "../PageButton/PageButton";
 import ToggleButton from "../ToggleButton/ToggleButton";
 import { UserForm } from "./ComponentStyles";
 
 export default function UserRequest({showStep}) {
-    // const navigate = useNavigate()
 
     function handleSubmit(e){
         e.preventDefault()
-        // navigate('/forgotpassword/otp-validation')
         showStep(1)
     }
 

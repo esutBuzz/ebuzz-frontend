@@ -1,7 +1,7 @@
 import '../App.scss'
 
 const breakpoints = {
-    mobile: "768px",
+    mobile: "600px",
     tablet: "1000px",
     desktop: "1001px"
 }
