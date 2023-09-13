@@ -4,9 +4,16 @@ import icon from '/images/icon.svg'
 import FormInput from '../../components/FormInput/FormInput'
 import PageButton from '../../components/PageButton/PageButton'
 import ToggleButton from '../../components/ToggleButton/ToggleButton'
+import { useNavigate } from 'react-router-dom'
 
 
 export default function Login() {
+    const navigate = useNavigate()
+
+    function handleSubmit(e){
+        e.preventDefault()
+        navigate('/dashboard')
+    }
   return (
     <OnboardingDisplay>
         <FormElement action="">
@@ -33,6 +40,7 @@ export default function Login() {
                 <ToggleButton
                     text='Login'
                     className='submit'
+                    onClick={handleSubmit}
                 />
 
                 <p>

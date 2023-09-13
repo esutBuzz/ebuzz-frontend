@@ -15,6 +15,7 @@ export const devices = {
 export const colors = {
     black: "#222222",
     white: "#fefefe",
+    ltWhite: "#F5F5F5",
     brown: "#711500",
     gray: "#756969",
     ltGray: "#DBD7DE",
