@@ -7,7 +7,7 @@
     {
         "id": 2,
         "title": "Settings",
-        "icon": "fa-regular fa-cog"  
+        "icon": "fa-solid fa-gear"
     },
     {
         "id": 3,
@@ -17,7 +17,7 @@
     {
         "id": 4,
         "title": "My profile",
-        "icon": "fa-regular fa-users"  
+        "icon": "fa-solid fa-users"
     },
     {
         "id": 5,

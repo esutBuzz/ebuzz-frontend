@@ -1,6 +1,7 @@
 import { styled } from "styled-components"
 import { colors, devices, values } from "../../StyledComponents/Styles"
 import TopNav from "../../components/TopNav/TopNav"
+import SideNav from "../../components/SideNav/SideNav"
 
 const DashboardContent = styled.main`
     position: relative;
@@ -30,9 +31,9 @@ export default function Dashboard() {
   return (
     <DashboardContent>
         <TopNav />
-        
+
         <MainDisplay>
-            Component
+            <SideNav />
         </MainDisplay>
     </DashboardContent>
   )
