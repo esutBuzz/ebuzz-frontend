@@ -34,3 +34,16 @@ $text: 1em;
 $large-text: 2.5em;
 $extra-large-text: 14em;
 $font: 'Inter', sans-serif;
+
+
+::-webkit-scrollbar{
+  width: .5em;
+  background: $lt-white;
+}
+
+::-webkit-scrollbar-thumb{
+  border-radius: $border-radius;
+  padding: .3em;
+  background: $brown;
+  cursor: pointer;
+}

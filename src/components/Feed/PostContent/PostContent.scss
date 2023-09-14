@@ -1,0 +1,111 @@
+@import '../../../App.scss';
+
+#post-content{
+    position: relative;
+    width: 70%;
+    padding: 1em .5em;
+    background: $white;
+    display: flex;
+    align-items: flex-start;
+    gap: .5em;
+    border-radius: $small-radius;
+
+    #avatar{
+        position: relative;
+        height: calc($wk-height * 0.03);
+        width: calc($wk-width * 0.03);
+        border-radius: $radius;
+    }
+
+    aside{
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        justify-content: space-between;
+
+        #edit-display{
+            position: relative;
+            width: 80%;
+            background: $lt-white;
+            border-radius: $small-radius;
+
+            textarea{
+                position: relative;
+                width: 100%;
+                padding: .2em 1em;
+                resize: none;
+                outline: none;
+                background: $lt-white;
+                border: none;
+                border-radius: $small-radius;
+                color: $gray;
+                font-family: $font;
+                font-size: $text;
+
+            }
+            #graphic-display{
+                position: relative;
+                width: 100%;
+                display: grid;
+                grid-template-columns: auto auto;
+                place-content: center;
+                gap: .2em;
+                
+                #gr-container{
+                    position: relative;
+                    width: max-content;
+
+                    img{
+                        position: relative;
+                        height: calc($wk-height * 0.1);
+                        width: max-content;
+                        object-fit: contain;
+                        border-radius: $small-radius;
+                    }
+
+                    .del-btn{
+                        position: absolute;
+                        top: 2%;
+                        right: 2%;
+                        background: $white;
+                        color: $brown;
+                        padding: .5em .7em;
+                        border-radius: $radius;
+                    }
+                }
+            }
+        }
+
+        menu{
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            #graphic-upload{
+                position: relative;
+                display: flex;
+                align-items: center;
+                gap: 1em;
+
+                input{
+                    display: none;
+                    cursor: pointer;
+                }
+                label{
+                    cursor: pointer;
+                }
+            }
+
+
+            .post-btn{
+                background: $brown;
+                color: $white;
+                width: 20%;
+                padding: .3em 0;
+            }
+        }
+    }
+}
