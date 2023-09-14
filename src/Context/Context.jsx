@@ -35,15 +35,93 @@ export default function ContextProvider({ children }) {
         });
     };
 
+    const follow = (user) => {
+        dispatch({
+            type: 'follow',
+            payload: user,
+        });
+    };
+
+    const unfollow = (user) => {
+        dispatch({
+            type: 'unfollow',
+            payload: user,
+        });
+    };
+
+    const addList = (list) => {
+        dispatch({
+            type: 'addList',
+            payload: list,
+        });
+    };
+    
+    const removeList = (listId) => {
+        dispatch({
+            type: 'removeList',
+            payload: listId,
+        });
+    };
+    
+    const joinCommunity = (community) => {
+        dispatch({
+            type: 'joinCommunity',
+            payload: community,
+        });
+    };
+    
+    const exitCommunity = (communityId) => {
+        dispatch({
+            type: 'exitCommunity',
+            payload: communityId,
+        });
+    };
+    
+    const editPost = (updatedPost) => {
+        dispatch({
+            type: 'editPost',
+            payload: updatedPost,
+        });
+    };
+    
+    const deletePost = (postId) => {
+        dispatch({
+            type: 'deletePost',
+            payload: postId,
+        });
+    };
+    
+    const mutePost = (postId) => {
+        dispatch({
+            type: 'mutePost',
+            payload: postId,
+        });
+    };
+
     const contextValue = {
         totalLikes: state.totalLikes,
         totalComments: state.totalComments,
         likes: state.likes,
         comments: state.comments,
+        followers: state.followers,
+        following: state.following,
+        lists: state.lists,
+        // blocked: state.blocked,
+        communities: state.communities,
+        posts: state.posts,
         addLike,
         removeLike,
         addComment,
         removeComment,
+        follow,
+        unfollow,
+        addList,
+        removeList,
+        joinCommunity,
+        exitCommunity,
+        editPost,
+        deletePost,
+        mutePost,
     };
 
     return (

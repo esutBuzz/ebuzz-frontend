@@ -5,7 +5,7 @@ import icon from '/images/icon.svg'
 const TopDisplay = styled.menu`
     position: relative;
     width: ${values.width};
-    padding: 1em 3em;
+    padding: .5em 3em;
     display: flex;
     align-items: center;
     justify-content: space-between;
