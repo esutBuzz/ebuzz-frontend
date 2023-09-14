@@ -5,7 +5,7 @@ import ToggleButton from '../ToggleButton/ToggleButton'
 import avatar from '/images/avatar.jpg'
 import './SideNav.scss'
 
-export default function SideNav() {
+export default function SideNav({className}) {
     const [active, setActive] = useState(0)
     function handleActive(index){
         setActive(index)
@@ -19,7 +19,7 @@ export default function SideNav() {
     }
 
     return(
-        <menu id="sidenav">
+        <menu id="sidenav" className={className}>
             <nav>
                 {data.map((items, index) => (
                     <ToggleButton

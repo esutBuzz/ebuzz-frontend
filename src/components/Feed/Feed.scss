@@ -1,0 +1,16 @@
+@import '../../App.scss';
+
+#feed{
+    position: relative;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background: none;
+    overflow-x: hidden;
+    // background: red;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}

@@ -50,9 +50,9 @@ const TopDisplay = styled.menu`
 
 // use react query to handle search
 
-export default function TopNav() {
+export default function TopNav({className}) {
   return (
-    <TopDisplay>
+    <TopDisplay className={className}>
         <h1>
             <img src={icon} alt="E-BUZZ" />
             E-BUZZ
