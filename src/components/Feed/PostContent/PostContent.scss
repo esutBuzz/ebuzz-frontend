@@ -105,7 +105,12 @@
                 color: $white;
                 width: 20%;
                 padding: .3em 0;
+
+                &.disable{
+                    background: $brown-accent;
+                }
             }
+
         }
     }
 }

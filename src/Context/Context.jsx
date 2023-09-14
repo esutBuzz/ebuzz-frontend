@@ -78,11 +78,21 @@ export default function ContextProvider({ children }) {
     };
 
     const addPost = (post) => {
+        const timestamp = new Date();
+        const newPost = {
+            id: Date.now(),
+            timestamp,
+            text: post.text,
+            images: post.images,
+            likes: [],
+            comments: [],
+        };
         dispatch({
             type: 'addPost',
-            payload: post,
+            payload: newPost,
         });
-    };      
+    };
+          
     
     const editPost = (updatedPost) => {
         dispatch({

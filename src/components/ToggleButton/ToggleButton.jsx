@@ -17,9 +17,13 @@ const TouchButton = styled.button`
     border-radius: ${values.smallRadius};
 `
 
-export default function ToggleButton({title, text, icon, onClick, className, children, image, isActive}) {
+export default function ToggleButton({title, text, icon, onClick, className, disabled, children, image, isActive}) {
     return(
-        <TouchButton onClick={onClick} className={`${className} ${isActive ? 'activated' : ''}`}>
+        <TouchButton
+            disabled={disabled}
+            onClick={onClick} 
+            className={`${className} ${isActive ? 'activated' : ''} ${disabled ? 'disable': ''}`}
+        >
             {icon && <i className={icon}></i>}
             {text}
             {image && <img src={image} alt={title} title={title} />}

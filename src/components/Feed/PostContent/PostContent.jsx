@@ -33,77 +33,76 @@ const items = [
 
 // the post button here would update the post to the database and be rendered in the feed
 
-export default function PostContent({addNewPost}){
-    const [text, setText] = useState('');
-    const [uploadedImages, setUploadedImages] = useState([]);
-    const [fileCount, setFileCount] = useState(0);
+export default function PostContent(){
+    const [text, setText] = useState('')
+    const [uploadedImages, setUploadedImages] = useState([])
+    const [fileCount, setFileCount] = useState(0)
 
     const { addPost } = useContext(UserContext)
 
     const handleImageUpload = (e) => {
-        const file = e.target.files[0];
+        const file = e.target.files[0]
     
         if (file && fileCount < 4) {
-          const imageUrl = URL.createObjectURL(file);
-          setUploadedImages((prevImages) => [...prevImages, imageUrl]);
-          setFileCount(fileCount + 1);
+          const imageUrl = URL.createObjectURL(file)
+          setUploadedImages((prevImages) => [...prevImages, imageUrl])
+          setFileCount(fileCount + 1)
     
           // Disable all file input elements if the file count reaches 4
           if (fileCount + 1 >= 4) {
-            disableFileInputs();
+            disableFileInputs()
           }
         }
-    };
+    }
     
     const handleTextChange = (e) => {
         // Check if the text length exceeds the maximum allowed (500 characters)
         if (e.target.value.length <= 500) {
-          setText(e.target.value);
+          setText(e.target.value)
         }
-    };
+    }
     
     const handleDeleteImage = (index) => {
-        const updatedImages = [...uploadedImages];
-        updatedImages.splice(index, 1);
-        setUploadedImages(updatedImages);
-        setFileCount(fileCount - 1);
+        const updatedImages = [...uploadedImages]
+        updatedImages.splice(index, 1)
+        setUploadedImages(updatedImages)
+        setFileCount(fileCount - 1)
     
         // Enable all file input elements when an image is deleted
-        enableFileInputs();
-    };
+        enableFileInputs()
+    }
     
     const disableFileInputs = () => {
-        const fileInputs = document.querySelectorAll('input[type="file"]');
+        const fileInputs = document.querySelectorAll('input[type="file"]')
         fileInputs.forEach((input) => {
-          input.disabled = true;
-        });
-    };
+          input.disabled = true
+        })
+    }
     
     const enableFileInputs = () => {
-        const fileInputs = document.querySelectorAll('input[type="file"]');
+        const fileInputs = document.querySelectorAll('input[type="file"]')
         fileInputs.forEach((input) => {
-          input.disabled = false;
-        });
-    };
+          input.disabled = false
+        })
+    }
+
+    const isPostEmpty = text.trim() === '' && uploadedImages.length === 0
 
     const handlePost = () => {
-        // Create a new post object with the text and uploadedImages
-        const newPost = {
-          id: Date.now(),
-          text,
-          images: uploadedImages,
-          likes: [],
-          comments: [],
-        };
-      
-        // Call the addNewPost function passed from the Feed component
-        addNewPost(newPost);
-      
-        // Clear the text and uploaded images after posting
-        setText('');
-        setUploadedImages([]);
-        setFileCount(0);
-    };
+        if (!isPostEmpty) {
+            const newPost = {
+                id: Date.now(),
+                text: text,
+                images: uploadedImages,
+                timestamp: Date.now(),
+            }
+            addPost(newPost)
+
+            setText('')
+            setUploadedImages([])
+        }
+    }
+    
 
     return(
         <section id='post-content'>
@@ -162,6 +161,7 @@ export default function PostContent({addNewPost}){
                 <ToggleButton
                     text={'Post'}
                     className={'post-btn'}
+                    disabled={isPostEmpty}
                     onClick={handlePost}
                 />
                 </menu>
