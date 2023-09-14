@@ -12,4 +12,122 @@
     flex-direction: column;
     align-items: center;
     gap: 1em;
+
+    #current-feed{
+        position: relative;
+        width: 90%;
+        border-radius: $border-radius;
+        background: $white;
+        padding: .5em 1em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        nav{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: .5em;
+            color: $black;
+
+            img{
+                position: relative;
+                height: calc($wk-height * 0.03);
+                width: calc($wk-width * 0.03);
+                border-radius: $radius;
+            }
+
+            small{
+                color: $gray;
+                font-weight: 200;
+                font-size: $small-text;
+            }
+
+            .icon{
+                margin-left: auto;
+                color: $gray;
+            }
+        }
+
+        #feed-container{
+            position: relative;
+            width: 80%;
+
+            #feed-display{
+                position: relative;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: .5em;
+
+                p{
+                    align-self: flex-start;
+                    text-align: left;
+                }
+
+                .swiper{
+                    position: relative;
+                    width: calc($wk-width * 0.3);
+                    height: calc($wk-height * 0.2);
+                    margin: 0;
+                    padding: 0;
+                    align-self: center;
+                    justify-self: center;
+                    
+                    .swiper-button-next,
+                    .swiper-button-prev{
+                        color: $brown;
+                    }
+
+                    // .swiper-wrapper{
+                    //     margin: 0;
+                    //     padding: 0;
+                    //     width: max-content;
+                    // }
+
+                    .slides{
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        display: grid;
+                        place-content: center;
+                        align-self: center;
+                        border-radius: $small-radius;
+                        overflow: hidden;
+
+                        img{
+                            position: relative;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: contain;
+                        }
+                    }
+                }
+
+                .swiper-pagination-bullet-active,
+                .swiper-pagination-bullet-active-main{
+                    background: $brown;
+                }
+            }
+
+            #interactions{
+                display: flex;
+                align-items: center;
+                gap: .7em;
+                margin: .7em 0;
+                
+                .btns{
+                    color: $gray;
+                    padding: 0;
+                }
+            }
+            #interaction-display{
+                display: flex;
+                gap: 1em;
+                align-items: center;
+                color: $gray;
+            }
+        }
+    }
 }

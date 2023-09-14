@@ -76,6 +76,13 @@ export default function ContextProvider({ children }) {
             payload: communityId,
         });
     };
+
+    const addPost = (post) => {
+        dispatch({
+            type: 'addPost',
+            payload: post,
+        });
+    };      
     
     const editPost = (updatedPost) => {
         dispatch({
@@ -119,6 +126,7 @@ export default function ContextProvider({ children }) {
         removeList,
         joinCommunity,
         exitCommunity,
+        addPost,
         editPost,
         deletePost,
         mutePost,

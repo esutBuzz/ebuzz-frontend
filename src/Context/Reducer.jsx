@@ -77,6 +77,12 @@ export default function Reducer(state, action) {
             communities: state.communities.filter((community) => community.id !== action.payload),
         };
 
+        case 'addPost':
+        return {
+            ...state,
+            posts: [...state.posts, action.payload],
+        };
+
         case 'editPost':
         const updatedPosts = state.posts.map((post) => {
             if (post.id === action.payload.id) {

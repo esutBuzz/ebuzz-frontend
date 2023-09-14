@@ -13,11 +13,11 @@ const DashboardContent = styled.main`
 	background: ${colors.ltWhite};
 	display: grid;
 	grid-template-areas:
-						'top top top top top top panel panel'
-						'side feed feed feed feed feed panel panel'
-						'side feed feed feed feed feed panel panel'
-						'side feed feed feed feed feed panel panel'
-						'side feed feed feed feed feed panel panel';
+						'top top top top panel panel'
+						'side feed feed feed panel panel'
+						'side feed feed feed panel panel'
+						'side feed feed feed panel panel'
+						'side feed feed feed panel panel';
 	grid-gap: 0;
 
 	// @media screen and ${devices.tablet}{

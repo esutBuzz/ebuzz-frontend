@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import avatar from '/images/avatar.jpg'
 import img from '/icons/img.svg'
 import gif from '/icons/gif.svg'
 import pen from '/icons/pen.svg'
 import ToggleButton from '../../ToggleButton/ToggleButton'
 import './PostContent.scss'
+import { UserContext } from '../../../Context/Context'
 
 const items = [
     {
@@ -32,10 +33,12 @@ const items = [
 
 // the post button here would update the post to the database and be rendered in the feed
 
-export default function PostContent(){
+export default function PostContent({addNewPost}){
     const [text, setText] = useState('');
     const [uploadedImages, setUploadedImages] = useState([]);
     const [fileCount, setFileCount] = useState(0);
+
+    const { addPost } = useContext(UserContext)
 
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
@@ -81,6 +84,25 @@ export default function PostContent(){
         fileInputs.forEach((input) => {
           input.disabled = false;
         });
+    };
+
+    const handlePost = () => {
+        // Create a new post object with the text and uploadedImages
+        const newPost = {
+          id: Date.now(),
+          text,
+          images: uploadedImages,
+          likes: [],
+          comments: [],
+        };
+      
+        // Call the addNewPost function passed from the Feed component
+        addNewPost(newPost);
+      
+        // Clear the text and uploaded images after posting
+        setText('');
+        setUploadedImages([]);
+        setFileCount(0);
     };
 
     return(
@@ -140,6 +162,7 @@ export default function PostContent(){
                 <ToggleButton
                     text={'Post'}
                     className={'post-btn'}
+                    onClick={handlePost}
                 />
                 </menu>
             </aside>
