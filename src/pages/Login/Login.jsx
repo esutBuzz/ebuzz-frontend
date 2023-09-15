@@ -14,6 +14,7 @@ export default function Login() {
         e.preventDefault()
         navigate('/dashboard')
     }
+    
   return (
     <OnboardingDisplay>
         <FormElement action="">

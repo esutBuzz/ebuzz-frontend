@@ -100,6 +100,7 @@ export default function PostContent(){
 
             setText('')
             setUploadedImages([])
+            setFileCount(0)
         }
     }
     

@@ -1,7 +1,7 @@
 import { createContext, useReducer } from 'react';
 import Reducer, { initialState } from './Reducer';
 
-export const UserContext = createContext();
+export const    UserContext = createContext();
 
 export default function ContextProvider({ children }) {
     
