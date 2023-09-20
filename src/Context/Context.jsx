@@ -1,5 +1,6 @@
 import { createContext, useReducer } from 'react';
 import Reducer, { initialState } from './Reducer';
+import { nanoid } from 'nanoid';
 
 export const    UserContext = createContext();
 
@@ -86,6 +87,7 @@ export default function ContextProvider({ children }) {
             images: post.images,
             likes: [],
             comments: [],
+            ide: nanoid(),
         };
         dispatch({
             type: 'addPost',
@@ -114,7 +116,12 @@ export default function ContextProvider({ children }) {
             payload: postId,
         });
     };
-
+    const FeedModaler = (postIde)=>{
+        dispatch({
+            type : "FEEDMODAL",
+            payload : postIde,
+        })
+    }
     const contextValue = {
         totalLikes: state.totalLikes,
         totalComments: state.totalComments,
@@ -126,6 +133,7 @@ export default function ContextProvider({ children }) {
         // blocked: state.blocked,
         communities: state.communities,
         posts: state.posts,
+        postIde : state.postIde,
         addLike,
         removeLike,
         addComment,
@@ -140,6 +148,7 @@ export default function ContextProvider({ children }) {
         editPost,
         deletePost,
         mutePost,
+        FeedModaler,
     };
 
     return (

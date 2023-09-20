@@ -1,11 +1,11 @@
-import { useContext, useState } from 'react'
-import avatar from '/images/avatar.jpg'
-import img from '/icons/img.svg'
-import gif from '/icons/gif.svg'
-import pen from '/icons/pen.svg'
-import ToggleButton from '../../ToggleButton/ToggleButton'
-import './PostContent.scss'
-import { UserContext } from '../../../Context/Context'
+import { useContext, useState } from 'react';
+import avatar from '/images/avatar.jpg';
+import img from '/icons/img.svg';
+import gif from '/icons/gif.svg';
+import pen from '/icons/pen.svg';
+import ToggleButton from '../../ToggleButton/ToggleButton';
+import './PostContent.scss';
+import { UserContext } from '../../../Context/Context';
 
 const items = [
     {
@@ -34,14 +34,18 @@ const items = [
 // the post button here would update the post to the database and be rendered in the feed
 
 export default function PostContent(){
-    const [text, setText] = useState('')
-    const [uploadedImages, setUploadedImages] = useState([])
-    const [fileCount, setFileCount] = useState(0)
 
-    const { addPost } = useContext(UserContext)
+    const [text, setText] = useState('');
+
+    const [uploadedImages, setUploadedImages] = useState([]);
+
+    const [fileCount, setFileCount] = useState(0);
+
+    const { addPost } = useContext(UserContext);
 
     const handleImageUpload = (e) => {
-        const file = e.target.files[0]
+
+        const file = e.target.files[0];
     
         if (file && fileCount < 4) {
           const imageUrl = URL.createObjectURL(file)
@@ -73,9 +77,10 @@ export default function PostContent(){
     }
     
     const disableFileInputs = () => {
-        const fileInputs = document.querySelectorAll('input[type="file"]')
+        const fileInputs = document.querySelectorAll('input[type="file"]');
+        console.log(fileInputs,"fileinput");
         fileInputs.forEach((input) => {
-          input.disabled = true
+          input.disabled = true;
         })
     }
     
@@ -141,6 +146,14 @@ export default function PostContent(){
                     <div id="graphic-upload">
                         {items.map(item => (
                             <span id='upload' key={item.id}>
+                                 <label htmlFor={item.id}>
+                                    <img
+                                        src={item.image}
+                                        alt={item.title}
+                                        title={item.title}
+                                      
+                                    />
+                                </label>
                                 <input
                                     type='file'
                                     name="image"
@@ -148,15 +161,11 @@ export default function PostContent(){
                                     accept={item.accept}
                                     onChange={handleImageUpload}
                                 />
-                                <label htmlFor={item.id}>
-                                    <img
-                                        src={item.image}
-                                        alt={item.title}
-                                        title={item.title}
-                                    />
-                                </label>
+                               
+                              
                             </span>
                         ))}
+                         
                     </div>
 
                 <ToggleButton

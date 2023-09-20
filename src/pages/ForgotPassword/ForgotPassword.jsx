@@ -52,13 +52,13 @@ const steps = [
 ]
 
 export default function ForgotPassword() {
-  const [currentStep, setCurrentStep] = useState(0)
+  const [currentStep, setCurrentStep] = useState(0);
 
   function handleStepChange(step){
     setCurrentStep(step)
   }
 
-  const StepComponent = steps[currentStep]
+  const StepComponent = steps[currentStep];
 
   return (
     <ForgotDisplay>
