@@ -16,12 +16,14 @@ export default function Feed({className}) {
     //here is where the querry handling would be done
     const { posts} = useContext(UserContext);
     
-    const [theModal , setTheModal] = useState(false);
+    const [theModal , setTheModal] = useState(null);
     const ClickHandler =(id)=>{
-       const idProve = posts.some((poster)=> poster.ide === id)
-        if(idProve){
-            setTheModal((prev)=>(!prev))
+        if( theModal === id){
+            setTheModal(null)
+        }else{
+            setTheModal(id)
         }
+        
    }
 
     return (
@@ -46,7 +48,7 @@ export default function Feed({className}) {
                             />
                          
                     </nav>
-                                 <FeedModal ClickHandler={ClickHandler} theModal={theModal} />
+                           { theModal === posts.ide ? <FeedModal theModal={theModal}   />: ""}
 
                             {/*learn the scss, to work,learn i display the container using postioning, */}
                         <div id="feed-container">
