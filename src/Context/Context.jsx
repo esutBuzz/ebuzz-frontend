@@ -116,12 +116,7 @@ export default function ContextProvider({ children }) {
             payload: postId,
         });
     };
-    const FeedModaler = (postIde)=>{
-        dispatch({
-            type : "FEEDMODAL",
-            payload : postIde,
-        })
-    }
+
     const contextValue = {
         totalLikes: state.totalLikes,
         totalComments: state.totalComments,
@@ -133,7 +128,7 @@ export default function ContextProvider({ children }) {
         // blocked: state.blocked,
         communities: state.communities,
         posts: state.posts,
-        postIde : state.postIde,
+      
         addLike,
         removeLike,
         addComment,
@@ -148,7 +143,7 @@ export default function ContextProvider({ children }) {
         editPost,
         deletePost,
         mutePost,
-        FeedModaler,
+        
     };
 
     return (

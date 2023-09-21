@@ -77,11 +77,6 @@ export default function Reducer(state, action) {
             ...state,
             communities: state.communities.filter((community) => community.id !== action.payload),
         };
-        case "FEEDMODAL":
-            return{
-                ...state,
-                postIde :[...state.postIde, action.payload]
-            }
         case 'addPost':
         return {
             ...state,
