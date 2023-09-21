@@ -9,7 +9,7 @@ import 'swiper/scss'
 import 'swiper/scss/navigation'
 import 'swiper/scss/pagination'
 import './Feed.scss';
-import FeedModal from './feedModal'
+import FeedModal from './FeedModal/FeedModal'
 
 
 export default function Feed({className}) {

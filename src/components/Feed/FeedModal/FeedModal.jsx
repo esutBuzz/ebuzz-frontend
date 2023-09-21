@@ -6,9 +6,9 @@ import mute from "/images/muteAccount.svg";
 import Block from "/images/blockAccount.svg";
 import AddCom from "/images/addCommunity.svg";
 import Repost from "/images/reportPost.svg";
-import Modal from '../../UI/Modal';
+import Modal from '../../../UI/Modal';
 import './FeedModal.scss';
-import { UserContext } from '../../Context/Context';
+import { UserContext } from '../../../Context/Context';
 
 const listItems = [
     {
