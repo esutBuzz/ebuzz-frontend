@@ -123,5 +123,5 @@ function formatTimestamp(timestamp) {
       const months = Math.floor(timeDiffInSeconds / 2419200);
       return `about ${months} month${months > 1 ? "s" : ""} ago`;
     }
-  }
+}
   

@@ -23,7 +23,7 @@ export default function OTPValidation({showStep}) {
                 {Array.from({ length: 4 }, (_, index) => (
                     <input
                         key={index}
-                        type="tel" 
+                        type="tel"
                         name="tel"
                         id="otp"
                         maxLength={1}
