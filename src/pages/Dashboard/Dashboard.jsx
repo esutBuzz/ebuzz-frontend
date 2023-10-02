@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { styled } from "styled-components"
 import { colors, devices, values } from "../../StyledComponents/Styles"
 import TopNav from "../../components/TopNav/TopNav"
@@ -39,12 +40,18 @@ const DashboardContent = styled.main`
 `
 
 export default function Dashboard() {
+	const [activeComponent, setActiveComponent] = useState('My profile')
+
+	const handleToggleClick = (componentName) => {
+		setActiveComponent(componentName)
+	}
+
 	return (
 		<DashboardContent>
 			<TopNav className={'top'} />
-			<SideNav className={'side'} />
+			<SideNav className={'side'} onToggle={handleToggleClick} />
 			<Feed className={'feed'} />
-			<DisplayPanel className={'panel'} />
+			<DisplayPanel className={'panel'} activeComponent={activeComponent} />
 		</DashboardContent>
 	)
 }

@@ -12,11 +12,11 @@
     {
         "id": 3,
         "title": "Notifications",
-        "icon": "fa-regular fa-bell"  
+        "icon": "fa-regular fa-bell"
     },
     {
         "id": 4,
-        "title": "My profile",
+        "title": "Communities",
         "icon": "fa-solid fa-users"
     },
     {
@@ -26,7 +26,7 @@
     },
     {
         "id": 6,
-        "title": "My profile",
+        "title": "Help",
         "icon": "fa-regular fa-circle-question"
     }
 ]
