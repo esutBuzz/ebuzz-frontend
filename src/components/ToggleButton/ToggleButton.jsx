@@ -17,9 +17,12 @@ const TouchButton = styled.button`
     border-radius: ${values.smallRadius};
 `
 
-export default function ToggleButton({title, text, icon, onClick, type, className, disabled, children, image, isActive}) {
+
+export default function ToggleButton({title, text, icon, type, onClick, className, disabled, children, image, isActive}) {
+
     return(
         <TouchButton
+            type={type}
             disabled={disabled}
             type={type}
             onClick={onClick} 
