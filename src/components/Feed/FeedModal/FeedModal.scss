@@ -1,36 +1,43 @@
 @import'../../../App.scss';
 
-
-
 #modal{
     position: absolute;
     top: 3em;
     left: 40%;
     right: -5%;
     width: 60%;
-    background: rgba(250.75, 250.75, 250.75, 0.84); border-radius: 7px; backdrop-filter: blur(40px);
+    background: rgba($white, 0.01); border-radius: 0.2em; backdrop-filter: blur(0.1em);
     padding: 0em 0em;
     border-radius: $border-radius;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 2px 8px rgba($black, 0.25);
     z-index: 30;
     // animation: slide-down 300ms ease-out forwards;
 }
 
-
 #feedModal{
+    position: relative;
+    width: 100%;
     border-bottom: 0.001em $gray solid;   
     display: flex;
     justify-content: space-between;
     gap: 1em;
     font-size: $text;
-    padding: .5em 1em;
+
+    &:last-child{
+        border-bottom: none;
+    }
 
 
-    #feedModalText{
+    .feed-modal{
+        position: relative;
+        width: 100%;
         color: $gray;
         font-size: $text;
         font-family: $font;
         font-weight: 500;
-        word-wrap: break-word
+        word-wrap: break-word;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 }
