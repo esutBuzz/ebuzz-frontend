@@ -2,7 +2,7 @@ import { createContext, useReducer } from 'react';
 import Reducer, { initialState } from './Reducer';
 import { nanoid } from 'nanoid';
 
-export const    UserContext = createContext();
+export const UserContext = createContext();
 
 export default function ContextProvider({ children }) {
     

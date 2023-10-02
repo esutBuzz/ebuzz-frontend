@@ -7,6 +7,7 @@ import './SideNav.scss'
 
 export default function SideNav({className}) {
     const [active, setActive] = useState(0)
+    
     function handleActive(index){
         setActive(index)
     }
