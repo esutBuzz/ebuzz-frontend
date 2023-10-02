@@ -20,8 +20,9 @@ const PageContent = styled.main`
 `
 
 export default function PageButton({title, icon, id, className, link}) {
-    const location = useLocation()
-    const isActive = location.pathname === link
+    const location = useLocation();
+    const isActive = location.pathname === link;
+    // console.log(location.pathname);
 
     function handleNavigate(){
         window.location.href = link

@@ -9,6 +9,7 @@ export const initialState = {
     // blocked: [],
     communities: [],
     posts: [],  
+    postIde:[],
 };
   
 export default function Reducer(state, action) {
@@ -76,7 +77,6 @@ export default function Reducer(state, action) {
             ...state,
             communities: state.communities.filter((community) => community.id !== action.payload),
         };
-
         case 'addPost':
         return {
             ...state,

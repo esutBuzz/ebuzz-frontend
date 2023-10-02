@@ -6,15 +6,15 @@ export default function FormInput({type, title, id, pattern, maxLength, minLengt
     const [formState, setFormState] = useState({
         [id]: '',
     })
-    const [showPassword, setShowPassword] = useState(false)
-
+    const [showPassword, setShowPassword] = useState(false);
+        console.log("formstate-checking", formState);
     function handleChange(e) {
         e.preventDefault()
 
-        const {name, value} = e.target
+        const {name, value} = e.target;
         setFormState((prevState) => ({
             ...prevState,
-            [name]: value
+            [name]: value,
         }))
     }
 

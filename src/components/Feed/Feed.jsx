@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Swiper, SwiperSlide} from 'swiper/react'
 import { Pagination, Navigation, Keyboard } from 'swiper/modules'
 import { UserContext } from '../../Context/Context'
@@ -8,12 +8,24 @@ import ToggleButton from '../ToggleButton/ToggleButton'
 import 'swiper/scss'
 import 'swiper/scss/navigation'
 import 'swiper/scss/pagination'
-import './Feed.scss'
+import './Feed.scss';
+import FeedModal from './FeedModal/FeedModal'
 
 
 export default function Feed({className}) {
     //here is where the querry handling would be done
-    const { posts } = useContext(UserContext);
+    const { posts} = useContext(UserContext);
+    
+    const [theModal , setTheModal] = useState(null);
+    const ClickHandler =(id)=>{
+        if( theModal === id){
+            setTheModal(null)
+        }else{
+            setTheModal(id)
+        }
+        
+   }
+
     return (
     // Contains what would be displayed in the feed
 
@@ -25,16 +37,20 @@ export default function Feed({className}) {
             
             {posts.slice().sort((a, b) => b.timestamp - a.timestamp).map((posts) => (
                 <section id="current-feed" key={posts.id}>
-                <nav>
-                        <img src={avatar} alt="username" title='username' id='user' />
-                        <h3>ObiWan Kenobi <small>@jediobiwan</small></h3>
+                    <nav>
+                            <img src={avatar} alt="username" title='username' id='user' />
+                            <h3>ObiWan Kenobi <small>@jediobiwan</small></h3>
 
-                        <ToggleButton
-                            icon={'fa-solid fa-bars-staggered'}
-                            className={'icon'}
-                        />
-                </nav>
+                            <ToggleButton
+                                icon={'fa-solid fa-bars-staggered'}
+                                className={'icon'}
+                                onClick={()=>{ClickHandler(posts.ide)}}
+                            />
+                         
+                    </nav>
+                           { theModal === posts.ide ? <FeedModal theModal={theModal}   />: ""}
 
+                            {/*learn the scss, to work,learn i display the container using postioning, */}
                         <div id="feed-container">
                                 <div id="feed-display">
                                     <small>Posted {formatTimestamp(posts.timestamp)}</small>
@@ -60,6 +76,7 @@ export default function Feed({className}) {
                                         </Swiper>
                                     )}
                                 </div>
+                                
                                 <div id='interactions'>
                                     {icons.map((items, index) => (
                                         <ToggleButton
@@ -70,6 +87,7 @@ export default function Feed({className}) {
                                         />
                                     ))}
                                 </div>
+
                                 <div id="interaction-display">
                                     <p>{posts.likes.length}Likes</p> &bull;
                                     <p>{posts.comments.length}Comments</p>

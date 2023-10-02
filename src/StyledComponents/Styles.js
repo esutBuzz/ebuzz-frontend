@@ -3,13 +3,13 @@ import '../App.scss'
 const breakpoints = {
     mobile: "600px",
     tablet: "1000px",
-    desktop: "1001px"
+    desktop: "1001px",
 }
 
 export const devices = {
     mobile: `(max-width: ${breakpoints.mobile})`,
     tablet: `(max-width: ${breakpoints.tablet})`,
-    desktop: `(min-width: ${breakpoints.desktop})`
+    desktop: `(min-width: ${breakpoints.desktop})`,
 }
 
 export const colors = {
