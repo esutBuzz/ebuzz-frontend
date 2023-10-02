@@ -1,4 +1,4 @@
-import React ,{useContext, useState}from 'react';
+import React from 'react';
 import notInsteresed from "/images/notInterested.svg";
 import addRemove from "/images/addRemoveList.svg";
 import unFollow from "/images/unfollow.svg";
@@ -6,9 +6,8 @@ import mute from "/images/muteAccount.svg";
 import Block from "/images/blockAccount.svg";
 import AddCom from "/images/addCommunity.svg";
 import Repost from "/images/reportPost.svg";
-import Modal from '../../../UI/Modal';
 import './FeedModal.scss';
-import { UserContext } from '../../../Context/Context';
+
 
 const listItems = [
     {
@@ -51,20 +50,20 @@ function FeedModal({theModal}) {
 
      const displayFeedModal =  listItems.map((item)=>{
         return(
-            <div id="feedModal" key={item.id} >
+            
+                 <div id="feedModal" key={item.id} >
                  <p id="feedModalText">{item.info}</p>
                  <img src={item.image} alt={item.info} />
-            </div>
+                 </div>
+        
         )
      })
 
   return (
        <>
-        {
-              ( <Modal>  {displayFeedModal} </Modal>   ) 
-               
-        }
-
+              <div id='modal'>
+              {displayFeedModal} 
+              </div>
        </>
   )
 }
