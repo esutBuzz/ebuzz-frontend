@@ -14,7 +14,7 @@ import FeedModal from './FeedModal/FeedModal'
 
 export default function Feed({className}) {
     //here is where the querry handling would be done
-    const { posts} = useContext(UserContext);
+    const {posts} = useContext(UserContext);
     
     const [theModal , setTheModal] = useState(null);
     const ClickHandler =(id)=>{
@@ -23,8 +23,7 @@ export default function Feed({className}) {
         }else{
             setTheModal(id)
         }
-        
-   }
+    }
 
     return (
     // Contains what would be displayed in the feed
@@ -38,61 +37,60 @@ export default function Feed({className}) {
             {posts.slice().sort((a, b) => b.timestamp - a.timestamp).map((posts) => (
                 <section id="current-feed" key={posts.id}>
                     <nav>
-                            <img src={avatar} alt="username" title='username' id='user' />
-                            <h3>ObiWan Kenobi <small>@jediobiwan</small></h3>
+                        <img src={avatar} alt="username" title='username' id='user' />
+                        <h3>ObiWan Kenobi <small>@jediobiwan</small></h3>
 
-                            <ToggleButton
-                                icon={'fa-solid fa-bars-staggered'}
-                                className={'icon'}
-                                onClick={()=>{ClickHandler(posts.ide)}}
-                            />
-                         
+                        <ToggleButton
+                            icon={'fa-solid fa-bars-staggered'}
+                            className={'icon'}
+                            onClick={()=>{ClickHandler(posts.ide)}}
+                        />
                     </nav>
-                           { theModal === posts.ide ? <FeedModal theModal={theModal}   />: ""}
+                        { theModal === posts.ide ? <FeedModal theModal={theModal}   />: ""}
 
-                            {/*learn the scss, to work,learn i display the container using postioning, */}
-                        <div id="feed-container">
-                                <div id="feed-display">
-                                    <small>Posted {formatTimestamp(posts.timestamp)}</small>
-                                    <p>{posts.text}</p>
+                        {/*learn the scss, to work,learn i display the container using postioning, */}
+                    <div id="feed-container">
+                        <div id="feed-display">
+                            <small>Posted {formatTimestamp(posts.timestamp)}</small>
+                            <p>{posts.text}</p>
 
-                                    {posts.images.length > 0 &&(
-                                        <Swiper
-                                            grabCursor={true}
-                                            effect='flip'
-                                            pagination={{
-                                                dynamicBullets: true,
-                                            }}
-                                            navigation={true}
-                                            keyboard={true}
-                                            modules={[Pagination, Navigation, Keyboard]}
-                                            className='swiper'
-                                        >
-                                            {posts.images.map((image, index) => (
-                                                <SwiperSlide key={index} className='slides'>
-                                                    <img src={image} alt={`Image ${index + 1}`} />
-                                                </SwiperSlide>
-                                            ))}
-                                        </Swiper>
-                                    )}
-                                </div>
-                                
-                                <div id='interactions'>
-                                    {icons.map((items, index) => (
-                                        <ToggleButton
-                                            key={index}
-                                            icon={items.icon}
-                                            className={`btns`}
-                                            title={items.title}
-                                        />
+                            {posts.images.length > 0 &&(
+                                <Swiper
+                                    grabCursor={true}
+                                    effect='flip'
+                                    pagination={{
+                                        dynamicBullets: true,
+                                    }}
+                                    navigation={true}
+                                    keyboard={true}
+                                    modules={[Pagination, Navigation, Keyboard]}
+                                    className='swiper'
+                                >
+                                    {posts.images.map((image, index) => (
+                                        <SwiperSlide key={index} className='slides'>
+                                            <img src={image} alt={`Image ${index + 1}`} />
+                                        </SwiperSlide>
                                     ))}
-                                </div>
-
-                                <div id="interaction-display">
-                                    <p>{posts.likes.length}Likes</p> &bull;
-                                    <p>{posts.comments.length}Comments</p>
-                                </div>
+                                </Swiper>
+                            )}
                         </div>
+                                
+                        <div id='interactions'>
+                            {icons.map((items, index) => (
+                                <ToggleButton
+                                    key={index}
+                                    icon={items.icon}
+                                    className={`btns`}
+                                    title={items.title}
+                                />
+                            ))}
+                        </div>
+
+                        <div id="interaction-display">
+                            <p>{posts.likes.length}Likes</p> &bull;
+                            <p>{posts.comments.length}Comments</p>
+                        </div>
+                    </div>
                 </section>
             ))}
         </main>

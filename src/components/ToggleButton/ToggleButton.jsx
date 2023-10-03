@@ -24,7 +24,6 @@ export default function ToggleButton({title, text, icon, type, onClick, classNam
         <TouchButton
             type={type}
             disabled={disabled}
-            type={type}
             onClick={onClick} 
             className={`${className} ${isActive ? 'activated' : ''} ${disabled ? 'disable': ''}`}
         >

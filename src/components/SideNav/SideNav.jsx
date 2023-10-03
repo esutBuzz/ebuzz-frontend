@@ -25,7 +25,7 @@ export default function SideNav({className, onToggle}) {
                 {data.map((items, index) => (
                     <ToggleButton
                         key={index}
-                        type={'button'}
+                        type='button'
                         text={items.title}
                         icon={items.icon}
                         isActive={active === index}
