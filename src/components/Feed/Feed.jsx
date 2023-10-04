@@ -5,16 +5,17 @@ import { UserContext } from '../../Context/Context'
 import avatar from '/images/avatar.jpg'
 import PostContent from './PostContent/PostContent'
 import ToggleButton from '../ToggleButton/ToggleButton'
+import FeedModal from './FeedModal/FeedModal'
+import { PostComment, Comments } from './Comments'
 import 'swiper/scss'
 import 'swiper/scss/navigation'
 import 'swiper/scss/pagination'
 import './Feed.scss';
-import FeedModal from './FeedModal/FeedModal'
 
 
 export default function Feed({className}) {
     //here is where the querry handling would be done
-    const {posts} = useContext(UserContext);
+    const { posts, totalComments } = useContext(UserContext);
     
     const [theModal , setTheModal] = useState(null);
     const ClickHandler =(id)=>{
@@ -25,6 +26,19 @@ export default function Feed({className}) {
         }
     }
 
+    const [selectedPostId, setSelectedPostId] = useState(null);
+    const [isPostCommentVisible, setPostCommentVisible] = useState(false);
+
+    function togglePostComment(postId) {
+        setSelectedPostId(postId);
+        setPostCommentVisible(true);
+    };
+
+    function closePostComment() {
+        setSelectedPostId(null);
+        setPostCommentVisible(false);
+    };
+
     return (
     // Contains what would be displayed in the feed
 
@@ -34,8 +48,8 @@ export default function Feed({className}) {
 
             {/* content here would be mapped from a database, and also be updated by 2 seconds according to the latest. with option to refresh */}
             
-            {posts.slice().sort((a, b) => b.timestamp - a.timestamp).map((posts) => (
-                <section id="current-feed" key={posts.id}>
+            {posts.slice().sort((a, b) => b.timestamp - a.timestamp).map((post) => (
+                <section id="current-feed" key={post.id}>
                     <nav>
                         <img src={avatar} alt="username" title='username' id='user' />
                         <h3>ObiWan Kenobi <small>@jediobiwan</small></h3>
@@ -43,18 +57,18 @@ export default function Feed({className}) {
                         <ToggleButton
                             icon={'fa-solid fa-bars-staggered'}
                             className={'icon'}
-                            onClick={()=>{ClickHandler(posts.ide)}}
+                            onClick={()=>{ClickHandler(post.ide)}}
                         />
                     </nav>
-                        { theModal === posts.ide ? <FeedModal theModal={theModal}   />: ""}
+                        { theModal === post.ide ? <FeedModal theModal={theModal}   />: ""}
 
                         {/*learn the scss, to work,learn i display the container using postioning, */}
                     <div id="feed-container">
                         <div id="feed-display">
-                            <small>Posted {formatTimestamp(posts.timestamp)}</small>
-                            <p>{posts.text}</p>
+                            <small>Posted {formatTimestamp(post.timestamp)}</small>
+                            <p>{post.text}</p>
 
-                            {posts.images.length > 0 &&(
+                            {post.images.length > 0 &&(
                                 <Swiper
                                     grabCursor={true}
                                     effect='flip'
@@ -66,7 +80,7 @@ export default function Feed({className}) {
                                     modules={[Pagination, Navigation, Keyboard]}
                                     className='swiper'
                                 >
-                                    {posts.images.map((image, index) => (
+                                    {post.images.map((image, index) => (
                                         <SwiperSlide key={index} className='slides'>
                                             <img src={image} alt={`Image ${index + 1}`} />
                                         </SwiperSlide>
@@ -76,43 +90,41 @@ export default function Feed({className}) {
                         </div>
                                 
                         <div id='interactions'>
-                            {icons.map((items, index) => (
-                                <ToggleButton
-                                    key={index}
-                                    icon={items.icon}
-                                    className={`btns`}
-                                    title={items.title}
-                                />
-                            ))}
+                            <ToggleButton
+                                title='likes'
+                                icon='fa-regular fa-heart'
+                                className={`btns`}
+                            />
+                            <ToggleButton
+                                title='comments'
+                                icon='fa-regular fa-comment'
+                                className={`btns`}
+                                onClick={() => togglePostComment(post.id)}
+                            />
+                            <ToggleButton
+                                title='share'
+                                icon='fa-regular fa-paper-plane'
+                                className={`btns`}
+                            />
                         </div>
 
                         <div id="interaction-display">
-                            <p>{posts.likes.length}Likes</p> &bull;
-                            <p>{posts.comments.length}Comments</p>
+                            <p>{post.likes.length}Likes</p> &bull;
+                            <p>{totalComments}Comments</p>
                         </div>
+
+                        {isPostCommentVisible && selectedPostId === post.id ? (
+                            <PostComment postId={post.id} closeComment={closePostComment} />
+                        ) : null}
+
+                        
+                        <Comments post={post} />
                     </div>
                 </section>
             ))}
         </main>
     )
 }
-
-const icons = [
-    {
-        title: "Like",
-        icon: "fa-regular fa-heart"
-    },
-
-    {
-        title: "Comment",
-        icon: "fa-regular fa-comment"
-    },
-
-    {
-        title: "Share",
-        icon: "fa-regular fa-paper-plane"
-    }
-]
 
 function formatTimestamp(timestamp) {
     const now = new Date();

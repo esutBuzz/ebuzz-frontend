@@ -81,13 +81,12 @@ export default function ContextProvider({ children }) {
     const addPost = (post) => {
         const timestamp = new Date();
         const newPost = {
-            id: Date.now(),
+            id: nanoid(),
             timestamp,
             text: post.text,
             images: post.images,
             likes: [],
             comments: [],
-            ide: nanoid(),
         };
         dispatch({
             type: 'addPost',
