@@ -23,9 +23,13 @@ export default function ContextProvider({ children }) {
     };
 
     const addComment = (item) => {
+        const AddComment = {
+            id: nanoid(),
+            ...item, likesCount : 0 , comments:[]
+        }
         dispatch({
             type: 'addComment',
-            payload: item,
+            payload: AddComment,
         });
     };
 

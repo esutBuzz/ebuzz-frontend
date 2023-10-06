@@ -121,7 +121,7 @@ export function Comments({ post }) {
     return(
         <CommentsDisplay>
             {postComments.map((comment) => (
-                <article key={comment.id}>
+                <article key={comment.id}>  
                     <img src={avatar} alt="avatar" />
                     <p>{comment.text}</p>
                 </article>
