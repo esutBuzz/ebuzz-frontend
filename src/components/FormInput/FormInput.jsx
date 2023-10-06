@@ -2,12 +2,12 @@ import { useState } from 'react'
 import './FormInput.scss'
 
 
-export default function FormInput({type, title, id, pattern, maxLength, minLength, className}) {
+export default function FormInput({type, title, icon, id, value, onChange, pattern, maxLength, minLength, className}) {
     const [formState, setFormState] = useState({
         [id]: '',
     })
     const [showPassword, setShowPassword] = useState(false);
-        console.log("formstate-checking", formState);
+    
     function handleChange(e) {
         e.preventDefault()
 
@@ -28,8 +28,11 @@ export default function FormInput({type, title, id, pattern, maxLength, minLengt
             type={type === 'password' && showPassword ? 'text' : type}
             name={id}
             id={`input ${id}`}
-            value={formState[id]}
-            onChange={handleChange}
+            value={value}
+            onChange={(e) => {
+                handleChange(e)
+                onChange(e)
+            }}
             pattern={pattern}
             maxLength={maxLength}
             minLength={minLength}
@@ -40,6 +43,7 @@ export default function FormInput({type, title, id, pattern, maxLength, minLengt
         >
             {title}
         </label>
+        {icon && <i className={`base-i ${icon}`}></i> }
 
         {type === 'password' && (
             <i

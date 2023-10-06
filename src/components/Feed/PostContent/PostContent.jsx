@@ -6,6 +6,7 @@ import pen from '/icons/pen.svg';
 import ToggleButton from '../../ToggleButton/ToggleButton';
 import './PostContent.scss';
 import { UserContext } from '../../../Context/Context';
+import Event from '../Events/PostEvent';
 
 const items = [
     {
@@ -21,13 +22,6 @@ const items = [
         image: gif,
         title: "Upload gifs",
         accept: ".gif"
-    },
-    {
-        id: 3,
-        type: 'text',
-        image: pen,
-        title: "Upload text",
-        accept: ".txt, .pdf, .doc, .docx"
     }
 ]
 
@@ -36,12 +30,14 @@ const items = [
 export default function PostContent(){
 
     const [text, setText] = useState('');
-
     const [uploadedImages, setUploadedImages] = useState([]);
-
     const [fileCount, setFileCount] = useState(0);
-
+    const [active, setActive] = useState(false)
     const { addPost } = useContext(UserContext);
+
+    function handleModalActive() {
+        setActive(!active)
+    }
 
     const handleImageUpload = (e) => {
 
@@ -161,11 +157,14 @@ export default function PostContent(){
                                     accept={item.accept}
                                     onChange={handleImageUpload}
                                 />
-                               
-                              
                             </span>
                         ))}
-                         
+                        <ToggleButton
+                            image={pen}
+                            title='pen'
+                            className='pen'
+                            onClick={handleModalActive}
+                        />
                     </div>
 
                 <ToggleButton
@@ -176,6 +175,11 @@ export default function PostContent(){
                 />
                 </menu>
             </aside>
+
+            <Event
+                className={`event-modal ${!active ? 'active-modal' : ''}`}
+                closeModal={handleModalActive}
+            />
         </section>
     )
 }
