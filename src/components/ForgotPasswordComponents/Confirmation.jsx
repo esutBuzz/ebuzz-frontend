@@ -6,7 +6,7 @@ export default function Confirmation() {
     const navigate = useNavigate()
 
     function handleReset(){
-        navigate('/')
+        navigate('/login')
     }
     return(
         <UserForm>

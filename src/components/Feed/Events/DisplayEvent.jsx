@@ -71,8 +71,6 @@ const DisplayContent = styled.main`
 export default function DisplayEvent() {
     const { events } = useContext(UserContext)
 
-    console.log(events)
-
     return(
         <DisplayContent>
             {events.slice().sort((a, b) => b.timestamp - a.timestamp).map((events) => (

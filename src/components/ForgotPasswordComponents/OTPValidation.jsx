@@ -46,7 +46,7 @@ export default function OTPValidation({showStep}) {
             </p>
 
             <PageButton
-                link={'/'}
+                link={'/login'}
                 title={'Back to Login'}
                 icon={'fa-solid fa-arrow-left'}
                 className={'page-btn'}

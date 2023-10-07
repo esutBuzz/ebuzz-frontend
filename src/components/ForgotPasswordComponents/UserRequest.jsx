@@ -29,7 +29,7 @@ export default function UserRequest({showStep}) {
                 onClick={handleSubmit}
             />
             <PageButton
-                link={'/'}
+                link={'/login'}
                 title={'Back to Login'}
                 className={`page-btn`}
                 icon={'fa-solid fa-arrow-left'}

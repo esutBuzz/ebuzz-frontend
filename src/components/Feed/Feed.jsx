@@ -7,17 +7,16 @@ import PostContent from './PostContent/PostContent'
 import ToggleButton from '../ToggleButton/ToggleButton'
 import FeedModal from './FeedModal/FeedModal'
 import { PostComment, Comments } from './Comments'
+import DisplayEvent from './Events/DisplayEvent'
 import 'swiper/scss'
 import 'swiper/scss/navigation'
 import 'swiper/scss/pagination'
 import './Feed.scss';
-import FeedModal from './FeedModal/FeedModal'
-import DisplayEvent from './Events/DisplayEvent'
 
 
 export default function Feed({className}) {
     //here is where the querry handling would be done
-    const {posts, events , totalComments} = useContext(UserContext);
+    const {posts, totalComments, totalLikes} = useContext(UserContext);
     
     const [theModal , setTheModal] = useState(null);
     const ClickHandler =(id)=>{
@@ -68,7 +67,7 @@ export default function Feed({className}) {
                         {/*learn the scss, to work,learn i display the container using postioning, */}
                     <div id="feed-container">
                         <div id="feed-display">
-                            <small>Made a post {formatTimestamp(posts.timestamp)}</small>
+                            <small>Made a post {formatTimestamp(post.timestamp)}</small>
                             <p>{posts.text}</p>
 
                             {post.images.length > 0 &&(
@@ -112,7 +111,7 @@ export default function Feed({className}) {
                         </div>
 
                         <div id="interaction-display">
-                            <p>{post.likes.length}Likes</p> &bull;
+                            <p>{totalLikes}Likes</p> &bull;
                             <p>{totalComments}Comments</p>
                         </div>
 

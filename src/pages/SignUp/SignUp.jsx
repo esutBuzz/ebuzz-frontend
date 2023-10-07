@@ -42,7 +42,7 @@ export default function SignUp() {
                 <p>
                     Already have an account?
                     <PageButton
-                        link='/'
+                        link='/login'
                         title='Login'
                         className='onboard-btn'
                     />

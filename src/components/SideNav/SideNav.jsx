@@ -16,7 +16,7 @@ export default function SideNav({className, onToggle}) {
     function handleLogout() {
         // the main function would be done using react-querry
         // localStorage.removeItem('token')
-        navigate('/',{replace:true})
+        navigate('/login',{replace:true})
     }
 
     return(
