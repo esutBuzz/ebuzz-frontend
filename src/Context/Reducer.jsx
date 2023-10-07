@@ -112,6 +112,7 @@ export default function Reducer(state, action) {
         return {
             ...state,
             posts: [...state.posts, action.payload],
+            // totalComments: 0,
         };
 
         case 'editPost':

@@ -23,9 +23,13 @@ export default function ContextProvider({ children }) {
     };
 
     const addComment = (item) => {
+        const AddComment = {
+            id: nanoid(),
+            ...item, likesCount : 0 , comments:[]
+        }
         dispatch({
             type: 'addComment',
-            payload: item,
+            payload: AddComment,
         });
     };
 
@@ -112,13 +116,12 @@ export default function ContextProvider({ children }) {
     const addPost = (post) => {
         const timestamp = new Date();
         const newPost = {
-            id: Date.now(),
+            id: nanoid(),
             timestamp,
             text: post.text,
             images: post.images,
             likes: [],
             comments: [],
-            ide: nanoid(),
         };
         dispatch({
             type: 'addPost',
