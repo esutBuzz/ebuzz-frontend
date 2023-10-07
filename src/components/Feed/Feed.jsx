@@ -11,11 +11,13 @@ import 'swiper/scss'
 import 'swiper/scss/navigation'
 import 'swiper/scss/pagination'
 import './Feed.scss';
+import FeedModal from './FeedModal/FeedModal'
+import DisplayEvent from './Events/DisplayEvent'
 
 
 export default function Feed({className}) {
     //here is where the querry handling would be done
-    const { posts, totalComments } = useContext(UserContext);
+    const {posts, events , totalComments} = useContext(UserContext);
     
     const [theModal , setTheModal] = useState(null);
     const ClickHandler =(id)=>{
@@ -45,6 +47,7 @@ export default function Feed({className}) {
         <main id="feed" className={className}>
             {/* when updated, the content would be read from the user's login details */}
             <PostContent />
+            <DisplayEvent />
 
             {/* content here would be mapped from a database, and also be updated by 2 seconds according to the latest. with option to refresh */}
             
@@ -65,8 +68,8 @@ export default function Feed({className}) {
                         {/*learn the scss, to work,learn i display the container using postioning, */}
                     <div id="feed-container">
                         <div id="feed-display">
-                            <small>Posted {formatTimestamp(post.timestamp)}</small>
-                            <p>{post.text}</p>
+                            <small>Made a post {formatTimestamp(posts.timestamp)}</small>
+                            <p>{posts.text}</p>
 
                             {post.images.length > 0 &&(
                                 <Swiper

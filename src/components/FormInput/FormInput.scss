@@ -30,6 +30,11 @@
         }
     }
 
+    input[type = "date"]{
+        font-family: $font;
+        font-size: $text;
+    }
+
     label{
         position: absolute;
         top: 23%;
@@ -44,6 +49,14 @@
             padding: 0.3em;
             color: $brown;
         }
+    }
+
+    .base-i{
+        position: absolute;
+        top: 14%;
+        left: 1%;
+        font-size: calc($text * 2);
+        pointer-events: none;
     }
 
     i{
