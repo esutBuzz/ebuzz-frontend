@@ -18,6 +18,7 @@ export const colors = {
     ltWhite: "#F5F5F5",
     brown: "#711500",
     gray: "#756969",
+    trGray: "#75696944",
     ltGray: "#DBD7DE",
     red: "#EE7070",
     brownAccent: "#FFDFD8"

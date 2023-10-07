@@ -8,6 +8,7 @@ export const initialState = {
     lists: [],
     // blocked: [],
     communities: [],
+    events: [],
     posts: [],  
     postIde:[],
 };
@@ -66,6 +67,35 @@ export default function Reducer(state, action) {
             lists: state.lists.filter((list) => list.id !== action.payload),
         };
 
+        case 'addEvent':
+        return{
+            ...state,
+            events: [...state.events, action.payload],
+        };
+
+        case 'editEvent':
+        const updatedEvent = state.events.map((event) => {
+            if (event.id === action.payload.id) {
+                return {
+                    ...event,
+                    content: action.payload.content,
+                };
+            } else {
+                return event;
+            }
+        });
+
+        return {
+            ...state,
+            events: updatedEvent,
+        };
+
+        case 'deleteEvent':
+        return {
+            ...state,
+            events: state.events.filter((event) => event.id !== action.payload),
+        };
+
         case 'joinCommunity':
         return {
             ...state,
@@ -77,6 +107,7 @@ export default function Reducer(state, action) {
             ...state,
             communities: state.communities.filter((community) => community.id !== action.payload),
         };
+
         case 'addPost':
         return {
             ...state,

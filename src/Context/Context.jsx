@@ -63,6 +63,37 @@ export default function ContextProvider({ children }) {
             payload: listId,
         });
     };
+
+    const addEvent = (events) => {
+        const timestamp = new Date()
+        const newEvent = {
+            id: nanoid(),
+            timestamp,
+            title: events.title,
+            desc: events.desc,
+            from: events.from,
+            to: events.to,
+        };
+
+        dispatch({
+            type: 'addEvent',
+            payload: newEvent,
+        })
+    };
+
+    const editEvent = (updatedEvent) => {
+        dispatch({
+            type: 'editEvent',
+            payload: updatedEvent,
+        })
+    };
+
+    const deleteEvent = (eventId) => {
+        dispatch({
+            type: 'deleteEvent',
+            payload: eventId,
+        })
+    };
     
     const joinCommunity = (community) => {
         dispatch({
@@ -125,9 +156,9 @@ export default function ContextProvider({ children }) {
         followers: state.followers,
         following: state.following,
         lists: state.lists,
-        // blocked: state.blocked,
         communities: state.communities,
         posts: state.posts,
+        events: state.events,
       
         addLike,
         removeLike,
@@ -137,13 +168,15 @@ export default function ContextProvider({ children }) {
         unfollow,
         addList,
         removeList,
+        addEvent,
+        editEvent,
+        deleteEvent,
         joinCommunity,
         exitCommunity,
         addPost,
         editPost,
         deletePost,
         mutePost,
-        
     };
 
     return (

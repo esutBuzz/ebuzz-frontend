@@ -1,0 +1,114 @@
+@import '../../../App.scss';
+
+#post-event{
+    position: fixed;
+    width: $width;
+    height: $height;
+    top: 0;
+    left: 0;
+    background: $tr-gray;
+    font-family: $font;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+
+    i{
+        color: $gray;
+    }
+    
+    section{
+        position: relative;
+        width: 50%;
+        background: $white;
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2em;
+        border-radius: $small-radius;
+
+        @media screen and (max-width: 700px) {
+            width: 95%;
+        }
+
+        nav{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            h1{
+                font-size: $large-text;
+            }
+        }
+
+        form{
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1em;
+
+            .f-input{
+
+                input{
+                    padding: .5em 1em .5em 3em !important;
+                }
+                
+                label{
+                    left: 7% !important;
+                }
+                
+                @media screen and (max-width: 400px) {
+                    input{
+                        padding: .5em 1em .5em 2em !important;
+                    }
+
+                    i{
+                        top: 30%;
+                        left: 3%;
+                        font-size: 1em;
+                    }
+
+                    label{
+                        left: 10% !important;
+                    }
+                }
+            }
+
+            span{
+                position: relative;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 5em;
+
+                .f-input{
+                    label{
+                        left: 20% !important;
+                    }
+                }
+
+                .sb-btn{
+                    margin: 3em 0 0 0;
+                }
+
+                .add-event{
+                    background: $brown;
+                    color: $white;
+                    width: 30%;
+                }
+
+                .close-event{
+                    border: 0.02em solid $brown;
+                    color: $black;
+                    width: 30%;
+                }
+            }
+
+        }
+    }
+}
