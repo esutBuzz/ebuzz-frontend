@@ -7,9 +7,10 @@ const ProfileDisplay = styled.main`
 `
 
 export default function Profile() {
+  
   return (
     <ProfileDisplay>
-        Profile
+        Profile fuzzy
     </ProfileDisplay>
   )
 }
