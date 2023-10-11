@@ -19,6 +19,7 @@ export default function Feed({className}) {
     const {posts, totalComments, totalLikes} = useContext(UserContext);
     
     const [theModal , setTheModal] = useState(null);
+
     const ClickHandler =(id)=>{
         if( theModal === id){
             setTheModal(null)
@@ -62,12 +63,13 @@ export default function Feed({className}) {
                             onClick={()=>{ClickHandler(post.ide)}}
                         />
                     </nav>
-                        { theModal === post.ide ? <FeedModal theModal={theModal}   />: ""}
+                        { theModal === post.ide && <FeedModal/>}
 
                         {/*learn the scss, to work,learn i display the container using postioning, */}
                     <div id="feed-container">
                         <div id="feed-display">
                             <small>Made a post {formatTimestamp(post.timestamp)}</small>
+
                             <p>{posts.text}</p>
 
                             {post.images.length > 0 &&(
