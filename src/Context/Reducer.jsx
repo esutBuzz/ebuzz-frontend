@@ -32,8 +32,8 @@ export default function Reducer(state, action) {
         case 'addComment':
         return {
           ...state,
-          totalComments: state.totalComments + 1,
           comments: [...state.comments, action.payload],
+          totalComments: state.totalComments + 1,
         };
   
         case 'removeComment':

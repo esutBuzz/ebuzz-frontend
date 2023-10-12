@@ -4,6 +4,7 @@ import { colors, values } from "../../StyledComponents/Styles";
 import { useContext, useState } from "react";
 import { UserContext } from "../../Context/Context";
 import ToggleButton from "../ToggleButton/ToggleButton";
+import { nanoid } from "nanoid";
 
 const PostCommentDisplay = styled.section`
     position: relative;
@@ -85,8 +86,9 @@ export function PostComment({postId, closeComment}){
     function handleComment() {
         if (!isCommentEmpty) {
             addComment({
-                postId,
+               id: postId,
                 text: comment,
+                idHandler: nanoid(),
             });
 
             setComment("");
@@ -115,13 +117,14 @@ export function PostComment({postId, closeComment}){
 }
 
 export function Comments({ post }) {
-    const {comments} = useContext(UserContext)
-    const postComments = comments.filter((comment) => comment.postId === post.id);
+    const {comments} = useContext(UserContext);
+
+    const postComments = comments.filter((comment) => comment.id === post.ide);
 
     return(
         <CommentsDisplay>
             {postComments.map((comment) => (
-                <article key={comment.id}>  
+                <article key={comment.idHandler}>  
                     <img src={avatar} alt="avatar" />
                     <p>{comment.text}</p>
                 </article>
