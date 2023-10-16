@@ -82,7 +82,7 @@ export default function Feed({className}) {
                         <div id="feed-display">
                             <small>Made a post {formatTimestamp(post.timestamp)}</small>
 
-                            <p>{posts.text}</p>
+                            <p>{post.text}</p>
 
                             {post.images.length > 0 &&(
                                 <Swiper

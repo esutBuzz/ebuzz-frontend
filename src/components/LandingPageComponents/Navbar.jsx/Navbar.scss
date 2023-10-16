@@ -1,0 +1,8 @@
+@import '../../../App.scss';
+
+header{
+    position: -webkit-sticky;
+    position: sticky;
+    width: $width;
+    padding: .5em 3em;
+}
