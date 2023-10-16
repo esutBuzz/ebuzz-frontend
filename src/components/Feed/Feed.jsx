@@ -16,9 +16,10 @@ import './Feed.scss';
 
 export default function Feed({className}) {
     //here is where the querry handling would be done
-    const {posts, totalComments, totalLikes} = useContext(UserContext);
+    const {posts, totalComments, totalLikes,comments} = useContext(UserContext);
     
     const [theModal , setTheModal] = useState(null);
+
     const ClickHandler =(id)=>{
         if( theModal === id){
             setTheModal(null)
@@ -39,6 +40,18 @@ export default function Feed({className}) {
         setSelectedPostId(null);
         setPostCommentVisible(false);
     };
+
+    function commentCounter(array, targetId) {
+        let count = 0;
+      
+        for (let i = 0; i < array.length; i++) {
+          if (array[i].id === targetId) {
+            count++;
+          }
+        }
+      
+        return count;
+      }
 
     return (
     // Contains what would be displayed in the feed
@@ -62,12 +75,13 @@ export default function Feed({className}) {
                             onClick={()=>{ClickHandler(post.ide)}}
                         />
                     </nav>
-                        { theModal === post.ide ? <FeedModal theModal={theModal}   />: ""}
+                        { theModal === post.ide && <FeedModal/>}
 
                         {/*learn the scss, to work,learn i display the container using postioning, */}
                     <div id="feed-container">
                         <div id="feed-display">
                             <small>Made a post {formatTimestamp(post.timestamp)}</small>
+
                             <p>{posts.text}</p>
 
                             {post.images.length > 0 &&(
@@ -101,7 +115,7 @@ export default function Feed({className}) {
                                 title='comments'
                                 icon='fa-regular fa-comment'
                                 className={`btns`}
-                                onClick={() => togglePostComment(post.id)}
+                                onClick={() => togglePostComment(post.ide)}
                             />
                             <ToggleButton
                                 title='share'
@@ -112,11 +126,11 @@ export default function Feed({className}) {
 
                         <div id="interaction-display">
                             <p>{totalLikes}Likes</p> &bull;
-                            <p>{totalComments}Comments</p>
+                            <p>{commentCounter(comments,post.ide)}Comments</p>
                         </div>
 
-                        {isPostCommentVisible && selectedPostId === post.id ? (
-                            <PostComment postId={post.id} closeComment={closePostComment} />
+                        {isPostCommentVisible && selectedPostId === post.ide ? (
+                            <PostComment postId={post.ide} closeComment={closePostComment} />
                         ) : null}
 
                         

@@ -17,15 +17,19 @@ export default function ContextProvider({ children }) {
 
     const removeLike = (item) => {
         dispatch({
-            type: 'removeLike',
+
+            type:'removeLike',
             payload: item,
         });
     };
 
     const addComment = (item) => {
         const AddComment = {
-            id: nanoid(),
-            ...item, likesCount : 0 , comments:[]
+            id: item.id,
+            idHandler:item.idHandler,
+            text: item.text, 
+            likesCount : 0 , 
+            comments:[]
         }
         dispatch({
             type: 'addComment',
@@ -35,6 +39,7 @@ export default function ContextProvider({ children }) {
 
     const removeComment = (item) => {
         dispatch({
+
             type: 'removeComment',
             payload: item,
         });
@@ -116,12 +121,13 @@ export default function ContextProvider({ children }) {
     const addPost = (post) => {
         const timestamp = new Date();
         const newPost = {
-            id: nanoid(),
+            id: post.id,
             timestamp,
             text: post.text,
             images: post.images,
             likes: [],
             comments: [],
+            ide: nanoid(),
         };
         dispatch({
             type: 'addPost',
