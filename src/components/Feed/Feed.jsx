@@ -67,7 +67,7 @@ export default function Feed({className}) {
                 <section id="current-feed" key={post.id}>
                     <nav>
                         <img src={avatar} alt="username" title='username' id='user' />
-                        <h3>ObiWan Kenobi <small>@jediobiwan</small></h3>
+                        <h3>ObiWan Kenobi <small>   </small></h3>
 
                         <ToggleButton
                             icon={'fa-solid fa-bars-staggered'}
