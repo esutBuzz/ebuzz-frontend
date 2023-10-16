@@ -4,7 +4,7 @@ import Profile from "./Components/profile/Profile"
 import Settings from "./Components/Settings"
 import Notifications from "./Components/Notification/Notifications"
 import Communities from "./Components/communities/Communities.jsx"
-import Events from "./Components/Events.jsx"
+import Events from "./Components/Events/Events.jsx"
 import Help from "./Components/Help"
 
 const DisplayContent = styled.main`

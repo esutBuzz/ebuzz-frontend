@@ -21,7 +21,7 @@ function ProfileFeed() {
   return (
     <div id='feed'>
    {posts.slice().sort((a, b) => b.timestamp - a.timestamp).map((post) => (
-                    <div style={{width:"100%", height: "100%", borderBottom: "2px #F5F2F2 solid"}}>
+            <div style={{width:"100%", height: "100%", borderBottom: "2px #F5F2F2 solid"}}>
                  <section id="profile-feed" key={post.id}>
                     <nav>
                         <img src={avatar} alt="username" title='username' id='user' />
