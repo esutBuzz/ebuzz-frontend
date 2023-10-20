@@ -25,11 +25,11 @@ export default function Profile() {
           </div>
         </div>
         <div id="followContainer">
-          <p >300 <span>followers</span></p>
-          <p>300 <span>following</span></p>
+          <p >300 <small>followers</small></p>
+          <p>300 <small>following</small></p>
         </div>
           <div id="secondTextContainer">
-           <p> Debate team captain,400 level.Computer 
+           <p> Debate team captain,400 level. 
            </p>
           </div>
           <div id="button">
@@ -46,7 +46,7 @@ export default function Profile() {
       </div>
       </div>
       <div>
-        <ProfileFeed/>
+        {/* <ProfileFeed/> */}
       </div>
     </ProfileDisplay>
   )

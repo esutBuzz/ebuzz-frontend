@@ -27,15 +27,20 @@ const DashboardContent = styled.main`
 
 	.top{
 		grid-area: top;
+		max-width: 100%;
 	}
 	.side{
 		grid-area: side;
+		max-width: 100%;
 	}
 	.feed{
 		grid-area: feed;
+		max-width:100%;
 	}
 	.panel{
 		grid-area: panel;
+		max-width:100%;
+		
 	}
 `
 
