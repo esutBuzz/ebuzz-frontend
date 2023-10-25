@@ -8,6 +8,7 @@ const ProfileDisplay = styled.main`
     position: relative;
     width: 100%;
     height: 100%;
+    padding:1em;
 `
 
 export default function Profile() {
@@ -29,7 +30,7 @@ export default function Profile() {
           <p>300 <small>following</small></p>
         </div>
           <div id="secondTextContainer">
-           <p> Debate team captain,400 level. 
+           <p> Debate team captain,400 level. Computer education,Faculty of education
            </p>
           </div>
           <div id="button">
@@ -46,7 +47,7 @@ export default function Profile() {
       </div>
       </div>
       <div>
-        {/* <ProfileFeed/> */}
+        <ProfileFeed/>
       </div>
     </ProfileDisplay>
   )

@@ -11,6 +11,7 @@ import './communities.scss'
 const CommunitiesDisplay = styled.main`
     position: relative;
     width: 100%;
+    padding: 1em;
     height: 100%;
 `
 const communityFolder =[

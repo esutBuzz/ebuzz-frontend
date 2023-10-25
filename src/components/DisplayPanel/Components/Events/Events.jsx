@@ -10,6 +10,7 @@ const EventsDisplay = styled.main`
     position: relative;
     width: 100%;
     height: 100%;
+    padding:1em;
 `
 const eventData = [
     {

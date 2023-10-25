@@ -1,0 +1,41 @@
+@import'../../../../../App.scss';
+
+#setting_detail_container{
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    #detail_first_container{
+            margin-bottom: 30px;
+    }
+    #detail_second_container{
+
+        #second_main_container{
+            display: flex;
+            // border: 1px solid ;
+            align-items: center;
+            gap: 30px;
+            padding: 1em 0em;
+            margin-bottom: 30px;
+        }
+
+        h3{
+            font-family: $font;
+            font-size: $text;
+            color: $black;
+            font-weight: 600;
+        }
+
+        p{
+            font-size: $small-text;
+            font-family: $font;
+            color: $gray;
+            font-weight: 500;
+        }
+
+        #arrow_icon{
+            color: $gray;
+        }
+    }
+}

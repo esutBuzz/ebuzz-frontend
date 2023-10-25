@@ -2,14 +2,13 @@
 
 
 #event_container{
-    padding:1em;
+  
     #event_header{
         margin-bottom: 1.25em
     }
     #event_body{
 
         #main_event_body{
-            // border: 1px solid darkblue;
             display: flex;
             align-items: center;
             gap: 0.625em;
@@ -20,8 +19,6 @@
                 display: flex;
                 flex-direction: column;
                 gap: 0.313em 0em;
-                width: 50%;
-
                 h4{
                     font-family: $font;
                     color: $black;

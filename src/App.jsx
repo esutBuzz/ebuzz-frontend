@@ -3,8 +3,9 @@ import './App.scss'
 import SignUp from './pages/SignUp/SignUp'
 import Login from './pages/Login/Login'
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword'
-import Dashboard from './pages/Dashboard/Dashboard'
 import Landing from './pages/Landing/Landing'
+import SettingDetail from './components/DisplayPanel/Components/setting/settingDetail/SettingDetail'
+import NewDashboard from './pages/Dashboard/newDashboard'
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/forgot-password' element={<ForgotPassword />} />
-        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/dashboard' element={<NewDashboard/>} />
+        <Route path='/setting' element={<SettingDetail/>} />
       </Routes>
     </Router>
   )
