@@ -10,7 +10,7 @@ const LandingDisplay = styled.main`
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
-    padding: 3em;
+    padding: 0 3em;
     font-family: ${values.font};
 `
 
