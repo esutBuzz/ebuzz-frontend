@@ -1,10 +1,17 @@
-import React from "react";
+import React,{useState} from "react";
 import ToggleButton from "../components/ToggleButton/ToggleButton";
 import data from "../../data/SideNav.json";
 import icon from '/images/icon.svg';
 import avatar from '/images/avatar.jpg';
 import "./sidebar.scss";
 function SideBar({handle}) {
+
+    const [active, setActive] = useState(0)
+    
+    function handleActive(index){
+        setActive(index)
+    }
+
   return (
     <div>
       <menu id="sidenav">
@@ -23,10 +30,10 @@ function SideBar({handle}) {
                     type="button"
                     text={items.title}
                     icon={items.icon}
-                    // isActive={active === index}
+                    isActive={active === index}
                     className={"side-btns"}
                     onClick={() => {
-                        // handleActive(index)
+                        handleActive(index)
                         handle(items.title)
                     }}
                     />
