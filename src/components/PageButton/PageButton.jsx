@@ -16,13 +16,16 @@ const PageContent = styled.main`
     display: flex;
     gap: 1em;
     align-items: center;
-    justfy content: center;
+    justify-content: center;
+
+    img{
+        width: 100%;
+    }
 `
 
-export default function PageButton({title, icon, id, className, link}) {
+export default function PageButton({title, icon, id, image, className, link}) {
     const location = useLocation();
     const isActive = location.pathname === link;
-    // console.log(location.pathname);
 
     function handleNavigate(){
         window.location.href = link
@@ -31,6 +34,7 @@ export default function PageButton({title, icon, id, className, link}) {
     return (
         <PageContent id={id} className={`${className} ${isActive ? 'activeLink' : ''}`} onClick={handleNavigate}>
             {icon && <i className={icon}></i>}
+            {image && <img src={image} alt={title} title={title} /> }
             {title}
         </PageContent>
     )
