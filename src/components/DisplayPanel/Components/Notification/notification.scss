@@ -1,0 +1,33 @@
+@import'../../../../App.scss';
+
+
+
+#mainSection{
+
+    padding:1em;
+    #firstDiv{
+        h3{
+            font-family:$font;
+        }
+    }
+
+    #main{
+        display: flex;
+        align-items: center;
+        gap: 1.25em;
+        margin: 1.688em 0em;
+
+        img{
+            width: 57px;
+            height: 65px;
+            border-radius: 3px
+
+        }
+
+        p{
+            font-family: $font;
+            font-size:$small-text;
+            color:$black;
+        }
+    }
+}

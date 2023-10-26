@@ -1,0 +1,94 @@
+@import '../App.scss';
+
+#sidenav{
+    position: relative;
+    height: 100vh;
+    padding:1.25em;
+    display: flex;
+    flex-direction: column;
+    background: $white;
+    width: 100%;
+    #logo_component{
+        display: flex;
+        align-items: flex-end;
+        gap: 1.25em;
+        margin-left:0.625em;
+        margin-bottom:1.25em;
+        h1{
+            font-family: $font;
+            font-size: $text;
+            line-height: 29.05px;
+            font-weight: 700;
+        }
+    }
+
+    nav{
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: .5em;
+        .side-btns{
+            
+            position: relative;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            border-radius: 0;
+            
+            &.activated{
+                background: $brown-accent;
+                color: $brown;
+
+                &::before{
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 2%;
+                    height: 100%;
+                    background: $brown;
+                }
+            }
+        }
+        
+    }
+
+    .log-btn{
+        margin-top: 0.625em;
+        background: $brown;
+        color: $white;
+        padding: 0.625em 3.125em;
+    }
+
+    #lower_container{
+            margin-top:2.5em;
+           
+        aside{
+          
+            padding: 0.313em 3.438em 0.313em 0.313em;
+            background: $lt-gray;
+            border-radius: $small-radius;
+            display: flex;
+            gap: .3em;
+    
+            img{
+                position: relative;
+                height: calc($wk-height * 0.02);
+                width: calc($wk-width * 0.02);
+                border-radius: $radius;
+            }
+    
+            p{
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                color: $gray;
+            }
+        }
+        
+    }
+}

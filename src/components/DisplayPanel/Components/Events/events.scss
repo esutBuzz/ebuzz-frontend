@@ -1,0 +1,37 @@
+@import'../../../../App.scss';
+
+
+#event_container{
+  
+    #event_header{
+        margin-bottom: 1.25em
+    }
+    #event_body{
+
+        #main_event_body{
+            display: flex;
+            align-items: center;
+            gap: 0.625em;
+            padding: 1.25em 0em;
+            height: 100%;
+            border-bottom: 0.125em solid#F5F2F2 ;
+           #event_text{
+                display: flex;
+                flex-direction: column;
+                gap: 0.313em 0em;
+                h4{
+                    font-family: $font;
+                    color: $black;
+                }
+                p{
+                    font-family: $font;
+                    color: $gray;
+                    font-size: $text;
+                }
+                span{
+                    font-size: $small-text;
+                }
+           }
+        }
+    }
+}
