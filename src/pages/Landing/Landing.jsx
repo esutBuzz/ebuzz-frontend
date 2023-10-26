@@ -3,15 +3,14 @@ import { values } from "../../StyledComponents/Styles"
 import Navbar from "../../components/LandingPageComponents/Navbar.jsx/Navbar"
 import Hero from "../../components/LandingPageComponents/Hero"
 import MDAccessibility from "../../components/LandingPageComponents/MDAccessibility"
+import Posting from "../../components/LandingPageComponents/Posting"
 
 const LandingDisplay = styled.main`
     position: relative;
     width: 100%;
     height: ${values.height};
     overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    padding: 0 3em;
+    padding: 0;
     font-family: ${values.font};
 `
 
@@ -20,6 +19,7 @@ export default function Landing() {
         <LandingDisplay>
             <Navbar />
             <Hero />
+            <Posting />
             <MDAccessibility />
         </LandingDisplay>
     )

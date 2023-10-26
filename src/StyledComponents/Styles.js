@@ -17,6 +17,7 @@ export const colors = {
     white: "#fefefe",
     ltWhite: "#F5F5F5",
     brown: "#711500",
+    dkBrown: "#552519",
     gray: "#756969",
     trGray: "#75696944",
     ltGray: "#DBD7DE",
