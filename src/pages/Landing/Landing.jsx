@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { values } from "../../StyledComponents/Styles"
 import Navbar from "../../components/LandingPageComponents/Navbar.jsx/Navbar"
 import Hero from "../../components/LandingPageComponents/Hero"
+import MDAccessibility from "../../components/LandingPageComponents/MDAccessibility"
 import Posting from "../../components/LandingPageComponents/Posting"
 
 const LandingDisplay = styled.main`
@@ -19,6 +20,7 @@ export default function Landing() {
             <Navbar />
             <Hero />
             <Posting />
+            <MDAccessibility />
         </LandingDisplay>
     )
 }
