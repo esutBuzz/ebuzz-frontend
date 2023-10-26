@@ -1,12 +1,10 @@
 import styled from "styled-components"
-import TextAnimation from "../animations/TextAnimation"
 import one from '/images/one.png'
 import two from '/images/two.png'
 import three from '/images/three.png'
 import four from '/images/four.png'
 import five from '/images/five.png'
 import { devices, values } from "../../StyledComponents/Styles"
-import { HeaderOne } from "../animations/HeaderAnimations"
 
 const HeroDisplay = styled.main`
     position: relative;
@@ -15,13 +13,14 @@ const HeroDisplay = styled.main`
     display: flex;
     align-items: flex-start;
     flex-direction: column;
+    padding: 0 3em;
 
-    .heading{
+    h1{
         position: relative;
         align-self: center;
     }
 
-    .text{
+    p{
         position: relative;
         align-self: center;
         width: 50%;
@@ -35,11 +34,12 @@ const HeroDisplay = styled.main`
 const DisplaySection = styled.section`
     position: relative;
     width: 100%;
-    height: 70%;
+    height: 100%;
 
     img{
         width: 20%;
         position: absolute;
+        object-fit: contain;
 
         @media screen and ${devices.mobile} {
             width: 60%;
@@ -59,12 +59,12 @@ const DisplaySection = styled.section`
         }
 
         &:nth-child(4){
-            bottom: 25%;
+            bottom: 30%;
         }
 
         &:last-child{
             right: 0;
-            bottom: 10%;
+            bottom: 20%;
         }
     }
 `
@@ -72,14 +72,15 @@ const DisplaySection = styled.section`
 export default function Hero() {
     return(
         <HeroDisplay>
-            <HeaderOne
-                title1="Seamless Interactions"
-                className="heading"
-            />
-            <TextAnimation
-                text='Connect with friends effortlessly while experiencing smooth and intuitive communication within the school community,Seamlessly navigate our platform to get a hassle free experience.'
-                className='text'
-            />
+            <h1>
+                Seamless Interactions
+            </h1>
+            <p>
+                Connect with friends effortlessly while 
+                experiencing smooth and intuitive communication 
+                within the school community,Seamlessly navigate 
+                our platform to get a hassle free experience.
+            </p>
 
             <DisplaySection>
                 <img src={one} alt="girl avatar in light orange with text" />
