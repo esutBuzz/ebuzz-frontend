@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { values } from "../../StyledComponents/Styles"
 import Navbar from "../../components/LandingPageComponents/Navbar.jsx/Navbar"
 import Hero from "../../components/LandingPageComponents/Hero"
+import MDAccessibility from "../../components/LandingPageComponents/MDAccessibility"
 
 const LandingDisplay = styled.main`
     position: relative;
@@ -19,6 +20,7 @@ export default function Landing() {
         <LandingDisplay>
             <Navbar />
             <Hero />
+            <MDAccessibility />
         </LandingDisplay>
     )
 }
