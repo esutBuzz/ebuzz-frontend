@@ -1,0 +1,17 @@
+[
+    {
+        "image": "/images/ftshare.png",
+        "title": "Share moments",
+        "text": "Upload moments and activities happening on school grounds with friends"
+    },
+    {
+        "image": "/images/ftevent.png",
+        "title": "Post events",
+        "text": "Post about upcoming events hosted in the school premises to get th word across"
+    },
+    {
+        "image": "/images/ftcomm.png",
+        "title": "Join Communitites",
+        "text": "Join various communities or groups created by you or other people"
+    }
+]
