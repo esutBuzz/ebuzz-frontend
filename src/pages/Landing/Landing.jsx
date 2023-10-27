@@ -4,6 +4,7 @@ import Navbar from "../../components/LandingPageComponents/Navbar.jsx/Navbar"
 import Hero from "../../components/LandingPageComponents/Hero"
 import MDAccessibility from "../../components/LandingPageComponents/MDAccessibility"
 import Posting from "../../components/LandingPageComponents/Posting"
+import Features from "../../components/LandingPageComponents/Features"
 import Groups from "../../components/LandingPageComponents/Groups"
 
 const LandingDisplay = styled.main`
@@ -23,6 +24,7 @@ export default function Landing() {
             <Posting />
             <MDAccessibility />
             <Groups />
+            <Features />
         </LandingDisplay>
     )
 }
