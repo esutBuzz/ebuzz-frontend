@@ -4,8 +4,8 @@ import { values, devices, colors } from "./Styles";
 export const OnboardingDisplay = styled.main`
     position: relative;
     width: ${values.width};
-    height: ${values.height};
-    overflow: hidden;
+    height:100vh;
+    overflow: scroll;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;

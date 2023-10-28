@@ -2,36 +2,38 @@ import { useState } from 'react'
 import './FormInput.scss'
 
 
-export default function FormInput({type, title, icon, id, value, onChange, pattern, maxLength, minLength, className}) {
+export default function FormInput({type, title, icon, id, value, onChange, pattern, maxLength, minLength, className,userInfo}) {
     const [formState, setFormState] = useState({
         [id]: '',
     })
     const [showPassword, setShowPassword] = useState(false);
     
     function handleChange(e) {
-        e.preventDefault()
-
-        const {name, value} = e.target;
+        e.preventDefault();
+        const { name, value } = e.target;
         setFormState((prevState) => ({
             ...prevState,
             [name]: value,
-        }))
+        }));
+    
+        if (onChange) {
+            onChange(value);         }
     }
-
+    
     function togglePassword() {
         setShowPassword((prevShowPassword) => !prevShowPassword)
     }
-
+    // console.log(formState)
   return (
     <span id='form-input' className={className}>
         <input
             type={type === 'password' && showPassword ? 'text' : type}
             name={id}
             id={`input ${id}`}
-            value={value}
+            value={userInfo}
+            
             onChange={(e) => {
                 handleChange(e)
-                onChange(e)
             }}
             pattern={pattern}
             maxLength={maxLength}
