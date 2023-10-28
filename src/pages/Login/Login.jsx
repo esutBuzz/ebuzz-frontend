@@ -5,29 +5,95 @@ import FormInput from '../../components/FormInput/FormInput'
 import PageButton from '../../components/PageButton/PageButton'
 import ToggleButton from '../../components/ToggleButton/ToggleButton'
 import { useNavigate } from 'react-router-dom'
-
+import React,{useState} from "react";
+import axios from 'axios'
 
 export default function Login() {
     const navigate = useNavigate()
+    const Password_regex =
+    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!])(.{6,})$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const [isLoading, setIsLoading] = useState(false);
+    const [passwordState, setPasswordState] = useState(false);
+    const [emailState, setEmailState] = useState(false);
+    const [userInfo , setUserInfo]= useState({
+        email: '',
+        password: ''
+    })
+    const handleInputChange = (fieldName, value) => {
+        setUserInfo(prevUserInfo => ({
+            ...prevUserInfo,
+            [fieldName]: value
+        }));
+    };
 
     function handleSubmit(e){
-        e.preventDefault()
-        navigate('/dashboard')
+        e.preventDefault();
+        setIsLoading(true);
+        const loginInfo = {
+            email: userInfo.email,
+            password: userInfo.password,
+        }
+        if(!emailRegex.test(loginInfo.email)){
+            setEmailState(true);
+            setIsLoading(false);
+            return;
+        }
+        if(!Password_regex.test(loginInfo.password)){
+            setPasswordState(true);
+            setIsLoading(false);
+            return;
+        }
+        const handleApiCall =async()=>{
+            const loginApi = 'https://ebuzz.onrender.com/api/v1/users/login';
+           try{
+            const response = await axios.post( loginApi, JSON.stringify(loginInfo),
+            {
+                headers: {
+                  "Content-Type": "application/json",
+                  "Access-Control-Allow-Origin": "*",
+                },
+              }
+
+            )
+            console.log(response, 'response')
+
+           }catch(error){
+            console.log(error)
+           }
+        }
+        handleApiCall();
+        setIsLoading(false);
+        navigate('/dashboard');
+       
     }
     
   return (
     <OnboardingDisplay>
-        <FormElement action="">
+        <FormElement action="" onSubmit={handleSubmit}>
             <h3>
                 <img src={icon} alt="E-BUZZ" />
                 E-BUZZ
             </h3>
-
             <section>
                 <h2>Log into your account</h2>
-
-                <FormInput type="text" title="Username" className="user name" id='username' />
-                <FormInput type="password" title="Your Password" className="user password" id='password' />
+                <FormInput
+                 type="email" 
+                 title="Email" 
+                 className="user email" 
+                 id='email'
+                 onChange={(value) => handleInputChange('email', value)} 
+                 userInfo={userInfo.email}
+                 />
+                
+                <FormInput
+                 type="password"
+                  title="Your Password"
+                   className="user password" 
+                   id='password' 
+                   onChange={(value) => handleInputChange('password', value)}
+                   userInfo={userInfo.password}
+                   />
 
                 <aside>
                     <span>
@@ -39,9 +105,8 @@ export default function Login() {
 
 
                 <ToggleButton
-                    text='Login'
+                    text={isLoading ? "Loading..." : "Login"}
                     className='submit'
-                    onClick={handleSubmit}
                 />
 
                 <p>
