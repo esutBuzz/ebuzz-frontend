@@ -24,8 +24,10 @@ export default function Navbar() {
                 {NavItems.map((items, index) => (
                     <Link
                         key={index}
+                        to={items.link}
                         spy={true}
                         smooth={true}
+                        duration={500}
                         className='link'
                         activeClass='activeLink'
                     >
