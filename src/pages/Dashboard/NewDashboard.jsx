@@ -3,7 +3,6 @@ import SideBar from "../../SideBar/SideBar";
 import NewDisplaypanel from "../../NewDisplayPanel/NewDisplaypanel";
 import NewFeed from "../../NewFeed/NewFeed";
 import "./dashboard.scss";
-import SettingDetail from "../../components/DisplayPanel/Components/setting/settingDetail/SettingDetail";
 import MiddleSetting from "../../SettingBody/MiddleSetting";
 import SideSetting from "../../SettingBody/SideSetting";
 
