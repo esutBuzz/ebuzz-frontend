@@ -4,7 +4,7 @@ import data from "../../data/SideNav.json";
 import icon from '/images/icon.svg';
 import avatar from '/images/avatar.jpg';
 import "./sidebar.scss";
-function SideBar({handle}) {
+function SideBar({handle, toggleDisplay}) {
 
     const [active, setActive] = useState(0)
     
@@ -35,6 +35,7 @@ function SideBar({handle}) {
                     onClick={() => {
                         handleActive(index)
                         handle(items.title)
+                        toggleDisplay(true)
                     }}
                     />
                 ))}

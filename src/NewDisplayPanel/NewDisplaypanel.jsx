@@ -7,11 +7,11 @@ import Profile from '../components/DisplayPanel/Components/profile/Profile';
 import Settings from '../components/DisplayPanel/Components/setting/Settings';
 import Help from '../components/DisplayPanel/Components/Help';
 
-function NewDisplaypanel({activeComponent}) {
+function NewDisplaypanel({activeComponent,toggleDisplay}) {
   return (
     <div id='displaye'>
    {activeComponent === 'My profile' && <Profile />}
-      	{activeComponent === 'Settings' && <Settings />}
+      	{activeComponent === 'Settings' && <Settings toggleDisplay={toggleDisplay}/>}
       	{activeComponent === 'Notifications' && <Notifications />}
       	{activeComponent === 'Communities' && <Communities />}
       	{activeComponent === 'Events' && <Events />}
