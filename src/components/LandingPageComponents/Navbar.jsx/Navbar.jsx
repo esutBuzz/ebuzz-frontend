@@ -7,6 +7,7 @@ import './Navbar.scss'
 
 export default function Navbar() {
     const [toggleMenu, setToggleMenu] = useState(false);
+    
 
     function handleMenuOpen() {
         setToggleMenu(!toggleMenu);

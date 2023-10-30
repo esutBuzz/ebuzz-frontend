@@ -8,7 +8,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import FormInput from "../../components/FormInput/FormInput";
 import image from "/images/login-img.svg";
-import icon from "/images/icon.svg";
+import logo from '/icons/ebuzz-logo.png'
 import axios from "axios";
 
 export default function SignUp() {
@@ -85,11 +85,7 @@ export default function SignUp() {
   return (
     <OnboardingDisplay>
       <FormElement action="" onSubmit={handleSubmit}>
-        <h3>
-          <img src={icon} alt="E-BUZZ" />
-          E-BUZZ
-        </h3>
-
+        <img src={logo} alt="ebuzz logo" />
         <section>
           <h2>Create your own account</h2>
 

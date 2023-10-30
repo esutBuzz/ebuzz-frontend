@@ -11,6 +11,8 @@ header{
     justify-content: space-between;
     z-index: 99;
     padding: 0 3em;
+    background: $white;
+    box-shadow: 0.002em 0.002em 0.2em rgba($black, 0.3);
 
     .logo{
         position: relative;

@@ -13,7 +13,7 @@ export const OnboardingDisplay = styled.main`
     font-family: ${values.font};
 
     .image{
-        position relative;
+        position: relative;
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -31,20 +31,11 @@ export const FormElement = styled.form`
     flex-direction: column;
     align-items: flex-start;
     padding: 1em;
-    
-    h3{
-        display: flex;
-        align-items: center;
-        justify-content: center;
         
-        img{
-            position: relative;
-            width: max-content;
+    img{
+        position: relative;
+        width: 20%;
 
-        }
-        @media screen and ${devices.mobile}{
-            align-self: center;
-        }
     }
     
     section{

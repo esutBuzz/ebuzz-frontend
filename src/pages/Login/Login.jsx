@@ -1,6 +1,6 @@
 import { OnboardingDisplay, FormElement } from '../../StyledComponents/Onboarding'
 import image from '/images/login-img.svg'
-import icon from '/images/icon.svg'
+import logo from '/icons/ebuzz-logo.png'
 import FormInput from '../../components/FormInput/FormInput'
 import PageButton from '../../components/PageButton/PageButton'
 import ToggleButton from '../../components/ToggleButton/ToggleButton'
@@ -79,10 +79,7 @@ export default function Login() {
   return (
     <OnboardingDisplay>
         <FormElement action="" onSubmit={handleSubmit}>
-            <h3>
-                <img src={icon} alt="E-BUZZ" />
-                E-BUZZ
-            </h3>
+            <img src={logo} alt="ebuzz logo" />
             <section>
                 <h2>Log into your account</h2>
                 <FormInput
