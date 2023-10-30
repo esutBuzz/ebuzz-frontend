@@ -131,15 +131,6 @@ export default function Login() {
                  userInfo={userInfo.password}
                  />
 
-          <FormInput
-            type="password"
-            title="Your Password"
-            className="user password"
-            id="password"
-            onChange={(value) => handleInputChange("password", value)}
-            userInfo={userInfo.password}
-          />
-
           <aside>
             <span>
               <input type="checkbox" name="checkbox" id="checkbox" />
