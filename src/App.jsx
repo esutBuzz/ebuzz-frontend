@@ -6,6 +6,8 @@ import ForgotPassword from './pages/ForgotPassword/ForgotPassword'
 import Landing from './pages/Landing/Landing'
 import SettingDetail from './components/DisplayPanel/Components/setting/settingDetail/SettingDetail'
 import NewDashboard from './pages/Dashboard/newDashboard'
+import SideBar from './SideBar/SideBar';
+import SettingBody from './SettingBody/SettingBody'
 
 function App() {
   return (
@@ -17,9 +19,12 @@ function App() {
         <Route path='/forgot-password' element={<ForgotPassword />} />
         <Route path='/dashboard' element={<NewDashboard/>} />
         <Route path='/setting' element={<SettingDetail/>} />
+        <Route path='/settingbody' element={<SettingBody/>} />
       </Routes>
     </Router>
   )
 }
 
 export default App
+
+

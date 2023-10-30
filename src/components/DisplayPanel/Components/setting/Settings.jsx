@@ -44,7 +44,7 @@ const settingData =[
     icon: Vector,
   },
 ]
-export default function Settings() {
+export default function Settings({toggleDisplay}) {
   
   const [active , setActive]= useState(0)
 
@@ -58,7 +58,10 @@ export default function Settings() {
             type= 'button'
             isActive={active === index}
             className={'setting-btns'}
-            onClick={()=>{setActive(index);}}          
+            onClick={()=>{
+              setActive(index)
+              toggleDisplay(false)
+              ;}}          
             />
           </>
       )

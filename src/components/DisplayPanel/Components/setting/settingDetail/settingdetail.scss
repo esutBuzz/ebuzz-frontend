@@ -1,11 +1,9 @@
 @import'../../../../../App.scss';
 
 #setting_detail_container{
-
         display: flex;
         justify-content: center;
         align-items: center;
-
     #detail_first_container{
             margin-bottom: 30px;
     }
@@ -13,7 +11,6 @@
 
         #second_main_container{
             display: flex;
-            // border: 1px solid ;
             align-items: center;
             gap: 30px;
             padding: 1em 0em;

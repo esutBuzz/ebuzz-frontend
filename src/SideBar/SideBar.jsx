@@ -1,12 +1,14 @@
 import React, { useContext, useState } from "react";
 import ToggleButton from "../components/ToggleButton/ToggleButton";
 import data from "../../data/SideNav.json";
+import { UserContext } from "../Context/Context";
 import icon from "/images/icon.svg";
 import avatar from "/images/avatar.jpg";
 import "./sidebar.scss";
-import { UserContext } from "../Context/Context";
 import { useNavigate } from "react-router-dom";
-function SideBar({ handle }) {
+
+function SideBar({ handle ,toggleDisplay}) {
+
   const { userDetails } = useContext(UserContext);
   const [active, setActive] = useState(0);
   const navigate = useNavigate();
@@ -26,22 +28,23 @@ function SideBar({ handle }) {
         </div>
 
         <div>
-          <nav>
-            {data.map((items, index) => (
-              <ToggleButton
-                key={index}
-                type="button"
-                text={items.title}
-                icon={items.icon}
-                isActive={active === index}
-                className={"side-btns"}
-                onClick={() => {
-                  handleActive(index);
-                  handle(items.title);
-                }}
-              />
-            ))}
-          </nav>
+            <nav>
+                {data.map((items, index) => (
+                    <ToggleButton
+                    key={index}
+                    type="button"
+                    text={items.title}
+                    icon={items.icon}
+                    isActive={active === index}
+                    className={"side-btns"}
+                    onClick={() => {
+                        handleActive(index)
+                        handle(items.title)
+                        toggleDisplay(true)
+                    }}
+                    />
+                ))}
+                </nav>
         </div>
 
         <div>
