@@ -6,7 +6,18 @@ export const UserContext = createContext();
 
 export default function ContextProvider({ children }) {
   const [state, dispatch] = useReducer(Reducer, initialState);
-
+  const addUserDetails = (details) => {
+    dispatch({
+      type: "addUserDetails",
+      payload: details,
+    });
+  };
+  const getUserToken = (id) => {
+    dispatch({
+      type: "getUserToken",
+      payload: id,
+    });
+  };
   const addLike = (item) => {
     dispatch({
       type: "addLike",
@@ -22,16 +33,16 @@ export default function ContextProvider({ children }) {
   };
 
   const addComment = (item) => {
-    const AddComment = {
-      id: item.id,
-      idHandler: item.idHandler,
-      text: item.text,
-      likesCount: 0,
-      comments: [],
-    };
+    // const AddComment = {
+    //   id: item.id,
+    //   idHandler: item.idHandler,
+    //   text: item.text,
+    //   likesCount: 0,
+    //   comments: [],
+    // };
     dispatch({
       type: "addComment",
-      payload: AddComment,
+      payload: item,
     });
   };
 
@@ -117,18 +128,24 @@ export default function ContextProvider({ children }) {
 
   const addPost = (post) => {
     const timestamp = new Date();
-    const newPost = {
-      id: post.id,
-      timestamp,
-      text: post.text,
-      images: post.images,
-      likes: [],
-      comments: [],
-      ide: nanoid(),
-    };
+    // const newPost = {
+    //   id: post.id,
+    //   timestamp,
+    //   text: post.text,
+    //   images: post.images,
+    //   likes: [],
+    //   comments: [],
+    //   ide: nanoid(),
+    // };
     dispatch({
       type: "addPost",
-      payload: newPost,
+      payload: post,
+    });
+  };
+  const addPost2 = (post) => {
+    dispatch({
+      type: "addPost2",
+      payload: post,
     });
   };
 
@@ -163,8 +180,13 @@ export default function ContextProvider({ children }) {
     lists: state.lists,
     communities: state.communities,
     posts: state.posts,
+    posts2: state.posts2,
     events: state.events,
+    userDetails: state.userDetails,
+    userToken: state.userToken,
 
+    getUserToken,
+    addUserDetails,
     addLike,
     removeLike,
     addComment,
@@ -179,6 +201,7 @@ export default function ContextProvider({ children }) {
     joinCommunity,
     exitCommunity,
     addPost,
+    addPost2,
     editPost,
     deletePost,
     mutePost,
