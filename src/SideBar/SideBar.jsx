@@ -5,7 +5,6 @@ import { UserContext } from "../Context/Context";
 import icon from "/images/icon.svg";
 import avatar from "/images/avatar.jpg";
 import "./sidebar.scss";
-import { UserContext } from "../Context/Context";
 import { useNavigate } from "react-router-dom";
 
 function SideBar({ handle ,toggleDisplay}) {
