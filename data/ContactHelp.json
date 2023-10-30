@@ -1,0 +1,37 @@
+{
+    "contact": [
+        {
+            "icon": "fa-regular fa-phone",
+            "title": "Call us",
+            "text": "Mon to Fri from 9am-7pm",
+            "info": "+234 8079443212"
+        },
+        {
+            "icon": "fa-regular fa-location",
+            "title": "Visit us",
+            "text": "Visit us on school campus",
+            "info": "ESUT Agbani,Enugu."
+        },
+        {
+            "icon": "fa-regular fa-envelope",
+            "title": "E-mail",
+            "text": "Send us a message any time",
+            "info": "ebuzzesut@gmail.com"
+        }
+    ],
+    
+    "help": [
+        {
+            "title": "Can I log in from esut portal",
+            "text": "No you can not."
+        },
+        {
+            "title": "Is there a mobile app?",
+            "text": "Not at the moment, it is being worked on"
+        },
+        {
+            "title": "Can I change my password?",
+            "text": "Yes, you can. It is an easy process."
+        }
+    ]
+}
