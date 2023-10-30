@@ -7,6 +7,7 @@ import ToggleButton from '../../components/ToggleButton/ToggleButton'
 import { useNavigate } from 'react-router-dom'
 import React,{useState} from "react";
 import axios from 'axios'
+import { BaseUrl } from '../../components/BaseUrl'
 
 export default function Login() {
     const navigate = useNavigate()
@@ -45,7 +46,7 @@ export default function Login() {
             return;
         }
         const handleApiCall =async()=>{
-            const loginApi = 'https://ebuzz.onrender.com/api/v1/users/login';
+            const loginApi = `${BaseUrl}/users/login`;
            try{
             const response = await axios.post( loginApi, JSON.stringify(loginInfo),
             {
@@ -56,7 +57,14 @@ export default function Login() {
               }
 
             )
+            if(response.data.user){
+                sessionStorage.setItem('user', JSON.stringify(response.data))
+                navigate('/dashboard');
+                return
+            }
+            alert('Invalid credentials...')
             console.log(response, 'response')
+            return
 
            }catch(error){
             console.log(error)
@@ -64,7 +72,7 @@ export default function Login() {
         }
         handleApiCall();
         setIsLoading(false);
-        navigate('/dashboard');
+      
        
     }
     

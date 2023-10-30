@@ -7,7 +7,8 @@ import ToggleButton from '../../ToggleButton/ToggleButton';
 import './PostContent.scss';
 import { UserContext } from '../../../Context/Context';
 import Event from '../Events/PostEvent';
-
+import axios from 'axios';
+import { BaseUrl } from '../../BaseUrl';
 const items = [
     {
         id: 1,
@@ -28,26 +29,31 @@ const items = [
 // the post button here would update the post to the database and be rendered in the feed
 
 export default function PostContent(){
-
+    const { user, token } = JSON.parse(sessionStorage.getItem('user'))
     const [text, setText] = useState('');
     const [uploadedImages, setUploadedImages] = useState([]);
     const [fileCount, setFileCount] = useState(0);
     const [active, setActive] = useState(false)
+    const [post, setPost] = useState( { author:user._id, files:[], content:'' } )
     const { addPost } = useContext(UserContext);
 
     function handleModalActive() {
         setActive(!active)
     }
 
-    const handleImageUpload = (e) => {
-
+    const handleImageUpload =  (e) => {
+        const reader = new FileReader()
         const file = e.target.files[0];
     
         if (file && fileCount < 4) {
           const imageUrl = URL.createObjectURL(file)
           setUploadedImages((prevImages) => [...prevImages, imageUrl])
           setFileCount(fileCount + 1)
-    
+           reader.readAsDataURL(file)
+           reader.addEventListener( 'load',e => {
+               post.files.push(e.currentTarget.result)
+           })
+           
           // Disable all file input elements if the file count reaches 4
           if (fileCount + 1 >= 4) {
             disableFileInputs()
@@ -59,6 +65,7 @@ export default function PostContent(){
         // Check if the text length exceeds the maximum allowed (500 characters)
         if (e.target.value.length <= 500) {
           setText(e.target.value)
+          setPost({...post, content:e.target.value})
         }
     }
     
@@ -86,10 +93,10 @@ export default function PostContent(){
           input.disabled = false
         })
     }
-
+    //https://ebuzz.onrender.com/api/v1/users/6534f7b03df5b5f45fc41858/posts
     const isPostEmpty = text.trim() === '' && uploadedImages.length === 0
 
-    const handlePost = () => {
+    const handlePost = async () => {
         if (!isPostEmpty) {
             const newPost = {
                 id: Date.now(),
@@ -98,13 +105,21 @@ export default function PostContent(){
                 timestamp: Date.now(),
             }
             addPost(newPost)
-
+        
+            const res = await axios.post(`${BaseUrl}/users/${user._id}/posts`, post,  {
+                headers: {
+                  "Content-Type": "application/json",
+                  "Access-Control-Allow-Origin": "*",
+                },
+              })
+          //  const res = await axios.get(`https://ebuzz.onrender.com/api/v1/users/${user._id}`)
+            console.log(res);
             setText('')
             setUploadedImages([])
             setFileCount(0)
         }
     }
-    
+   
 
     return(
         <section id='post-content'>
