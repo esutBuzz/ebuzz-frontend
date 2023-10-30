@@ -12,15 +12,20 @@ import { ColorRing } from "react-loader-spinner";
 function ProfileFeed() {
   const [profileFeedData, setProfileFeedData] = useState(null);
   const { totalLikes, comments, addUserDetails } = useContext(UserContext);
-  const storedUserId = localStorage.getItem("userId");
+  const {
+    user: { _id },
+    token,
+  } = JSON.parse(sessionStorage.getItem("user"));
 
-  const secondFetchUrl = `https://ebuzz.onrender.com/api/v1/users/${storedUserId}/posts`;
+  // const storedUserId = localStorage.getItem("userId");
+
+  const secondFetchUrl = `https://ebuzz.onrender.com/api/v1/users/${_id}/posts`;
   const {
     data: secondData,
     errorFetch: secondError,
     isLoadingFetch: secondIsLoading,
   } = useFetch(secondFetchUrl);
-  const fetchurl = `https://ebuzz.onrender.com/api/v1/users/${storedUserId}`;
+  const fetchurl = `https://ebuzz.onrender.com/api/v1/users/${_id}`;
   const {
     data: firstData,
     errorFetch: firstError,

@@ -69,6 +69,7 @@ export default function Login() {
         console.log(response);
         if (response.data.user) {
           sessionStorage.setItem("user", JSON.stringify(response.data));
+
           navigate("/dashboard");
 
           return;
