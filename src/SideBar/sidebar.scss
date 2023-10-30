@@ -2,24 +2,18 @@
 
 #sidenav{
     position: relative;
-    height: 100vh;
-    padding:1.25em;
+    height: $height;
+    padding: 1em 0;
     display: flex;
     flex-direction: column;
+    gap: 2em;
     background: $white;
-    width: 100%;
-    #logo_component{
-        display: flex;
-        align-items: flex-end;
-        gap: 1.25em;
-        margin-left:0.625em;
-        margin-bottom:1.25em;
-        h1{
-            font-family: $font;
-            font-size: $text;
-            line-height: 29.05px;
-            font-weight: 700;
-        }
+    width: 20%;
+
+    #logo{
+        position: relative;
+        align-self: flex-start;
+        width: 50%;
     }
 
     nav{
@@ -57,38 +51,36 @@
     }
 
     .log-btn{
-        margin-top: 0.625em;
+        position: relative;
+        width: 80%;
         background: $brown;
         color: $white;
-        padding: 0.625em 3.125em;
+        align-self: center;
     }
-
-    #lower_container{
-            margin-top:2.5em;
            
-        aside{
-          
-            padding: 0.313em 3.438em 0.313em 0.313em;
-            background: $lt-gray;
-            border-radius: $small-radius;
-            display: flex;
-            gap: .3em;
-    
-            img{
-                position: relative;
-                height: calc($wk-height * 0.02);
-                width: calc($wk-width * 0.02);
-                border-radius: $radius;
-            }
-    
-            p{
-                position: relative;
-                display: flex;
-                flex-direction: column;
-                gap: 0;
-                color: $gray;
-            }
+    aside{
+        position: relative;
+        margin: 0 1em;
+        padding: .5em 1em;
+        background: $lt-gray;
+        border-radius: $small-radius;
+        display: flex;
+        gap: .3em;
+        align-self: flex-end;
+
+        img{
+            position: relative;
+            height: calc($wk-height * 0.02);
+            width: calc($wk-width * 0.02);
+            border-radius: $radius;
         }
-        
+
+        p{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            color: $gray;
+        }
     }
 }
