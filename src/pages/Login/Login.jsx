@@ -32,6 +32,14 @@ export default function Login() {
     }));
   };
 
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   setIsLoading(true);
+  //   const loginInfo = {
+  //     email: userInfo.email,
+  //     password: userInfo.password,
+  //   };
+
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
@@ -39,51 +47,10 @@ export default function Login() {
       email: userInfo.email,
       password: userInfo.password,
     };
-
-    function handleSubmit(e) {
-      e.preventDefault();
-      setIsLoading(true);
-      const loginInfo = {
-        email: userInfo.email,
-        password: userInfo.password,
-      };
-      if (!emailRegex.test(loginInfo.email)) {
-        setEmailState(true);
-        setIsLoading(false);
-        return;
-      }
-      if (!Password_regex.test(loginInfo.password)) {
-        setPasswordState(true);
-        setIsLoading(false);
-        return;
-      }
-      const handleApiCall = async () => {
-        const loginApi = `${BaseUrl}/users/login`;
-        try {
-          const response = await axios.post(
-            loginApi,
-            JSON.stringify(loginInfo),
-            {
-              headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-              },
-            }
-          );
-          if (response.data.user) {
-            sessionStorage.setItem("user", JSON.stringify(response.data));
-            navigate("/dashboard");
-            return;
-          }
-          alert("Invalid credentials...");
-          console.log(response, "response");
-          return;
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      handleApiCall();
+    if (!emailRegex.test(loginInfo.email)) {
+      setEmailState(true);
       setIsLoading(false);
+      return;
     }
     if (!Password_regex.test(loginInfo.password)) {
       setPasswordState(true);
@@ -91,7 +58,7 @@ export default function Login() {
       return;
     }
     const handleApiCall = async () => {
-      const loginApi = "https://ebuzz.onrender.com/api/v1/users/login";
+      const loginApi = `${BaseUrl}/users/login`;
       try {
         const response = await axios.post(loginApi, JSON.stringify(loginInfo), {
           headers: {
@@ -99,16 +66,47 @@ export default function Login() {
             "Access-Control-Allow-Origin": "*",
           },
         });
+        console.log(response);
+        if (response.data.user) {
+          sessionStorage.setItem("user", JSON.stringify(response.data));
+          navigate("/dashboard");
+
+          return;
+        }
+        alert("Invalid credentials...");
         console.log(response, "response");
-        localStorage.setItem("userId", response.data.user._id);
-        console.log(response.data.user._id);
+        return;
       } catch (error) {
         console.log(error);
       }
     };
     handleApiCall();
     setIsLoading(false);
-    navigate("/dashboard");
+
+    if (!Password_regex.test(loginInfo.password)) {
+      setPasswordState(true);
+      setIsLoading(false);
+      return;
+    }
+    // const handleApiCall = async () => {
+    //   const loginApi = "https://ebuzz.onrender.com/api/v1/users/login";
+    //   try {
+    //     const response = await axios.post(loginApi, JSON.stringify(loginInfo), {
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //         "Access-Control-Allow-Origin": "*",
+    //       },
+    //     });
+    //     console.log(response, "response");
+    //     localStorage.setItem("userId", response.data.user._id);
+    //     console.log(response.data.user._id);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // };
+    // handleApiCall();
+    // setIsLoading(false);
+    // navigate("/dashboard");
   }
 
   return (

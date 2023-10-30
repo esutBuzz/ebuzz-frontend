@@ -123,7 +123,7 @@ function ProfileFeed() {
                           <SwiperSlide key={index} className="slides">
                             <img
                               style={{ width: "209px", height: "259px" }}
-                              src={`https://ebuzz.onrender.com/api/${image}`}
+                              src={image}
                               alt={`Image ${index + 1}`}
                             />
                           </SwiperSlide>

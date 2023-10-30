@@ -146,7 +146,7 @@ export default function Feed({ className }) {
 
       {/* content here would be mapped from a database, and also be updated by 2 seconds according to the latest. with option to refresh */}
 
-      {posts
+      {feedData
         ?.slice()
         ?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
         ?.map((post) => (

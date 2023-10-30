@@ -31,6 +31,7 @@ const items = [
 export default function PostContent() {
   const { user, token } = JSON.parse(sessionStorage.getItem("user"));
   const [text, setText] = useState("");
+  const [isPostLoading, setIsPostLoading] = useState(false);
   const [uploadedImages, setUploadedImages] = useState([]);
   const [fileCount, setFileCount] = useState(0);
   const [active, setActive] = useState(false);
@@ -41,7 +42,7 @@ export default function PostContent() {
   });
   const { addPost } = useContext(UserContext);
 
-  const { response, error, isLoading } = usePost(posturl, formData);
+  // const { response, error, isLoading } = usePost(posturl, formData);
 
   function handleModalActive() {
     setActive(!active);
@@ -120,6 +121,7 @@ export default function PostContent() {
 
   const handlePost = async () => {
     if (!isPostEmpty) {
+      setIsPostLoading(true);
       const newPost = {
         id: Date.now(),
         text: text,
@@ -127,15 +129,22 @@ export default function PostContent() {
         timestamp: Date.now(),
       };
       addPost(newPost);
-
-      const res = await axios.post(`${BaseUrl}/users/${user._id}/posts`, post, {
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
+      try {
+        const res = await axios.post(
+          `${BaseUrl}/users/${user._id}/posts`,
+          post,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+            },
+          }
+        );
+      } catch (error) {
+        setIsPostLoading(false);
+      }
+      setIsPostLoading(false);
       //  const res = await axios.get(`https://ebuzz.onrender.com/api/v1/users/${user._id}`)
-      console.log(res);
       setText("");
       setUploadedImages([]);
       setFileCount(0);
@@ -200,7 +209,7 @@ export default function PostContent() {
           </div>
 
           <ToggleButton
-            text={"Post"}
+            text={isPostLoading ? "Posting..." : "Post"}
             className={"post-btn"}
             disabled={isPostEmpty}
             onClick={handlePost}
