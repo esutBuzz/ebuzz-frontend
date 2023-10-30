@@ -8,9 +8,9 @@ import FormInput from "../../components/FormInput/FormInput";
 import PageButton from "../../components/PageButton/PageButton";
 import ToggleButton from "../../components/ToggleButton/ToggleButton";
 import { useNavigate } from "react-router-dom";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { UserContext } from "../../Context/Context";
+import { BaseUrl } from "../../components/BaseUrl";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -39,10 +39,51 @@ export default function Login() {
       email: userInfo.email,
       password: userInfo.password,
     };
-    if (!emailRegex.test(loginInfo.email)) {
-      setEmailState(true);
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      setIsLoading(true);
+      const loginInfo = {
+        email: userInfo.email,
+        password: userInfo.password,
+      };
+      if (!emailRegex.test(loginInfo.email)) {
+        setEmailState(true);
+        setIsLoading(false);
+        return;
+      }
+      if (!Password_regex.test(loginInfo.password)) {
+        setPasswordState(true);
+        setIsLoading(false);
+        return;
+      }
+      const handleApiCall = async () => {
+        const loginApi = `${BaseUrl}/users/login`;
+        try {
+          const response = await axios.post(
+            loginApi,
+            JSON.stringify(loginInfo),
+            {
+              headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+              },
+            }
+          );
+          if (response.data.user) {
+            sessionStorage.setItem("user", JSON.stringify(response.data));
+            navigate("/dashboard");
+            return;
+          }
+          alert("Invalid credentials...");
+          console.log(response, "response");
+          return;
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      handleApiCall();
       setIsLoading(false);
-      return;
     }
     if (!Password_regex.test(loginInfo.password)) {
       setPasswordState(true);

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import avatar from "/images/avatar.jpg";
 import img from "/icons/img.svg";
 import gif from "/icons/gif.svg";
@@ -7,9 +7,8 @@ import ToggleButton from "../../ToggleButton/ToggleButton";
 import "./PostContent.scss";
 import { UserContext } from "../../../Context/Context";
 import Event from "../Events/PostEvent";
-import usePost from "../../../hooks/usePost";
-import useFetch from "../../../hooks/useFetch";
-
+import axios from "axios";
+import { BaseUrl } from "../../BaseUrl";
 const items = [
   {
     id: 1,
@@ -30,18 +29,17 @@ const items = [
 // the post button here would update the post to the database and be rendered in the feed
 
 export default function PostContent() {
+  const { user, token } = JSON.parse(sessionStorage.getItem("user"));
   const [text, setText] = useState("");
   const [uploadedImages, setUploadedImages] = useState([]);
-  const [selectedFiles, setSelectedFiles] = useState([]);
-
   const [fileCount, setFileCount] = useState(0);
-  //const [posts, setPosts] = useState([]);
   const [active, setActive] = useState(false);
-  const [formData, setFormData] = useState(new FormData());
-  const { addPost, userId, userToken, addUserDetails } =
-    useContext(UserContext);
-  const storedUserId = localStorage.getItem("userId");
-  const posturl = `https://ebuzz.onrender.com/api/v1/users/${storedUserId}/posts`;
+  const [post, setPost] = useState({
+    author: user._id,
+    files: [],
+    content: "",
+  });
+  const { addPost } = useContext(UserContext);
 
   const { response, error, isLoading } = usePost(posturl, formData);
 
@@ -49,14 +47,34 @@ export default function PostContent() {
     setActive(!active);
   }
 
+  // const handleImageUpload = (e) => {
+  //   const file = e.target.files[0];
+
+  //   if (file && fileCount < 4) {
+  //     const imageUrl = URL.createObjectURL(file);
+  //     setUploadedImages((prevImages) => [...prevImages, imageUrl]);
+  //     setSelectedFiles((prevFiles) => [...prevFiles, file]);
+  //     setFileCount(fileCount + 1);
+
+  //     // Disable all file input elements if the file count reaches 4
+  //     if (fileCount + 1 >= 4) {
+  //       disableFileInputs();
+  //     }
+  //   }
+  // };
+
   const handleImageUpload = (e) => {
+    const reader = new FileReader();
     const file = e.target.files[0];
 
     if (file && fileCount < 4) {
       const imageUrl = URL.createObjectURL(file);
       setUploadedImages((prevImages) => [...prevImages, imageUrl]);
-      setSelectedFiles((prevFiles) => [...prevFiles, file]);
       setFileCount(fileCount + 1);
+      reader.readAsDataURL(file);
+      reader.addEventListener("load", (e) => {
+        post.files.push(e.currentTarget.result);
+      });
 
       // Disable all file input elements if the file count reaches 4
       if (fileCount + 1 >= 4) {
@@ -69,6 +87,7 @@ export default function PostContent() {
     // Check if the text length exceeds the maximum allowed (500 characters)
     if (e.target.value.length <= 500) {
       setText(e.target.value);
+      setPost({ ...post, content: e.target.value });
     }
   };
 
@@ -96,10 +115,10 @@ export default function PostContent() {
       input.disabled = false;
     });
   };
-
+  //https://ebuzz.onrender.com/api/v1/users/6534f7b03df5b5f45fc41858/posts
   const isPostEmpty = text.trim() === "" && uploadedImages.length === 0;
 
-  const handlePost = () => {
+  const handlePost = async () => {
     if (!isPostEmpty) {
       const newPost = {
         id: Date.now(),
@@ -107,18 +126,16 @@ export default function PostContent() {
         images: uploadedImages,
         timestamp: Date.now(),
       };
-      const newFormData = new FormData();
-      newFormData.append("author", userId);
-      newFormData.append("content", text);
+      addPost(newPost);
 
-      for (let i = 0; i < selectedFiles.length; i++) {
-        newFormData.append("files", selectedFiles[i]);
-      }
-
-      setFormData(newFormData);
-      //addPost(newPost);
-      //setPosts(formData);
-      setSelectedFiles([]);
+      const res = await axios.post(`${BaseUrl}/users/${user._id}/posts`, post, {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
+      //  const res = await axios.get(`https://ebuzz.onrender.com/api/v1/users/${user._id}`)
+      console.log(res);
       setText("");
       setUploadedImages([]);
       setFileCount(0);
