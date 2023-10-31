@@ -10,18 +10,21 @@ import Help from "./DisplayPanel/Components/Help";
 const DisplayView = styled.section`
   width: calc(${values.wkWidth} * 0.23);
   height: ${values.height};
-  overflow-x: hidden;
-`
 
-function NewDisplaypanel({activeComponent,toggleDisplay}) {
+  overflow-x: hidden;
+`;
+
+function NewDisplaypanel({ activeComponent, toggleDisplay }) {
   return (
     <DisplayView>
-      {activeComponent === 'My profile' && <Profile />}
-      {activeComponent === 'Settings' && <Settings toggleDisplay={toggleDisplay}/>}
-      {activeComponent === 'Notifications' && <Notifications />}
-      {activeComponent === 'Communities' && <Communities />}
-      {activeComponent === 'Events' && <Events />}
-      {activeComponent === 'Help' && <Help />}
+      {activeComponent === "My profile" && <Profile />}
+      {activeComponent === "Settings" && (
+        <Settings toggleDisplay={toggleDisplay} />
+      )}
+      {activeComponent === "Notifications" && <Notifications />}
+      {activeComponent === "Communities" && <Communities />}
+      {activeComponent === "Events" && <Events />}
+      {activeComponent === "Help" && <Help />}
     </DisplayView>
   );
 }

@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import "./search.scss";
+import { useSearchContext } from "../../Context/SearchContext";
 
 function Search() {
+  const { searchText, setSearchText } = useSearchContext();
+
+  const handleSearchChange = (e) => {
+    setSearchText(e.target.value);
+  };
+
   return (
     <div id="search_container">
       <span>
@@ -14,8 +21,8 @@ function Search() {
           name="search"
           id="search"
           placeholder="Search"
-          // value={searchQuery}
-          // onChange={handleSearch}
+          value={searchText}
+          onChange={handleSearchChange}
         />
       </span>
     </div>

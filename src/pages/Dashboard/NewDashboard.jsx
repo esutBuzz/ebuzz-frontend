@@ -6,6 +6,7 @@ import MiddleSetting from "../../SettingBody/MiddleSetting";
 import SideSetting from "../../SettingBody/SideSetting";
 import styled from "styled-components";
 import { values } from "../../StyledComponents/Styles";
+import { SearchProvider } from "../../Context/SearchContext";
 
 const DashboardDisplay = styled.main`
   position: relative;
@@ -36,7 +37,9 @@ function NewDashboard() {
       <SideBar handle={handleToggleClick} toggleDisplay={toggleDisplay} />
       {IsDisplay ? (
         <>
-          <NewFeed />
+          <SearchProvider>
+            <NewFeed />
+          </SearchProvider>
           <NewDisplaypanel
             activeComponent={activeComponent}
             toggleDisplay={toggleDisplay}

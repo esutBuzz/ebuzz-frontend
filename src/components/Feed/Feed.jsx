@@ -16,6 +16,7 @@ import { BiSolidDownArrow } from "react-icons/bi";
 import { BiSolidUpArrow } from "react-icons/bi";
 import useFetch from "../../hooks/useFetch";
 import { ColorRing } from "react-loader-spinner";
+import { useSearchContext } from "../../Context/SearchContext";
 
 export default function Feed({ className }) {
   //here is where the querry handling would be done
@@ -25,7 +26,7 @@ export default function Feed({ className }) {
   const fetchurl = `https://ebuzz.onrender.com/api/v1/users/posts/allPosts`;
   // const { data, isLoadingFetch, errorFetch } = useFetch(fetchurl);
   const [feedData, setFeedData] = useState([]);
-
+  const { searchText } = useSearchContext();
   const [theModal, setTheModal] = useState(null);
   const [selectedPostId, setSelectedPostId] = useState(null);
   const [selectedCommentId, setSelectedCommentId] = useState(null);
@@ -56,6 +57,9 @@ export default function Feed({ className }) {
         setIsFeedLoading(false);
       });
   }, []);
+  const filteredPosts = feedData.filter((post) =>
+    post.content.toLowerCase().includes(searchText.toLowerCase())
+  );
 
   const ClickHandler = (id) => {
     if (theModal === id) {
@@ -143,7 +147,7 @@ export default function Feed({ className }) {
 
       {/* content here would be mapped from a database, and also be updated by 2 seconds according to the latest. with option to refresh */}
 
-      {feedData
+      {filteredPosts
         ?.slice()
         ?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
         ?.map((post) => (
