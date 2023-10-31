@@ -2,10 +2,18 @@ import { useState } from "react";
 import SideBar from "../../SideBar/SideBar";
 import NewDisplaypanel from "../../components/NewDisplaypanel";
 import NewFeed from "../../NewFeed/NewFeed";
-import SettingDetail from "../../components/DisplayPanel/Components/setting/settingDetail/SettingDetail";
 import MiddleSetting from "../../SettingBody/MiddleSetting";
 import SideSetting from "../../SettingBody/SideSetting";
-import "./dashboard.scss";
+import styled from "styled-components";
+import { values } from "../../StyledComponents/Styles";
+
+const DashboardDisplay = styled.main`
+  position: relative;
+  width: ${values.width};
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+`
 
 function NewDashboard() {
   const [IsDisplay, setIsDisplay] = useState(true);
@@ -24,7 +32,7 @@ function NewDashboard() {
     setChangeHandler(data);
   };
   return (
-    <div className="dashboard_component">
+    <DashboardDisplay>
       <SideBar handle={handleToggleClick}  toggleDisplay={toggleDisplay}/>
       {IsDisplay ? (
         <>
@@ -37,7 +45,7 @@ function NewDashboard() {
           <SideSetting changeHandler={changeHandler} />
         </>
       )}
-    </div>
+    </DashboardDisplay>
   );
 }
 
