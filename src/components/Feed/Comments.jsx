@@ -7,6 +7,7 @@ import ToggleButton from "../ToggleButton/ToggleButton";
 import { nanoid } from "nanoid";
 import usePost from "../../hooks/usePost";
 import useFetch from "../../hooks/useFetch";
+import { useSearchContext } from "../../Context/SearchContext";
 
 const PostCommentDisplay = styled.section`
   position: relative;

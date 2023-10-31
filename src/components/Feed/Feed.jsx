@@ -26,7 +26,7 @@ export default function Feed({ className }) {
   const fetchurl = `https://ebuzz.onrender.com/api/v1/users/posts/allPosts`;
   // const { data, isLoadingFetch, errorFetch } = useFetch(fetchurl);
   const [feedData, setFeedData] = useState([]);
-  const { searchText } = useSearchContext();
+  const { searchText, commentsSize } = useSearchContext();
   const [theModal, setTheModal] = useState(null);
   const [selectedPostId, setSelectedPostId] = useState(null);
   const [selectedCommentId, setSelectedCommentId] = useState(null);
@@ -73,10 +73,10 @@ export default function Feed({ className }) {
     setSelectedPostId(null);
     setPostCommentVisible(false);
   }
-  // function toggleCommentsDisplay(postId) {
-  //   setSelectedCommentId(postId);
-  //   setCommentDisplayState(!commentDisplayState);
-  // }
+  function togglePostComment(postId) {
+    setSelectedPostId(postId);
+    setPostCommentVisible(!isPostCommentVisible);
+  }
   function toggleCommentsDisplay(postId) {
     setCommentDisplayStates((prevState) => ({
       ...prevState,
@@ -221,12 +221,14 @@ export default function Feed({ className }) {
                 <p>{0} Comments</p>
                 {commentDisplayStates[post?._id] ? (
                   <BiSolidDownArrow
+                    style={{ cursor: "pointer" }}
                     onClick={() => {
                       toggleCommentsDisplay(post?._id);
                     }}
                   />
                 ) : (
                   <BiSolidUpArrow
+                    style={{ cursor: "pointer" }}
                     onClick={() => {
                       toggleCommentsDisplay(post?._id);
                     }}
