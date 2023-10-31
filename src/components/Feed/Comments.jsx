@@ -166,12 +166,13 @@ export function Comments({ post, postId, authorId, commentDisplayState }) {
     if (data) {
       addComment(data);
       setAllComments(data);
+      console.log(data);
     }
   }, [data]);
   const postComments = comments?.filter(
     (comment) => comment?.postId === post?._id
   );
-
+  console.log(postComments);
   return commentDisplayState && postComments?.length > 0 ? (
     <CommentsDisplay>
       {postComments?.map((comment) => (

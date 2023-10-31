@@ -26,7 +26,8 @@ export default function Feed({ className }) {
   const fetchurl = `https://ebuzz.onrender.com/api/v1/users/posts/allPosts`;
   // const { data, isLoadingFetch, errorFetch } = useFetch(fetchurl);
   const [feedData, setFeedData] = useState([]);
-  const { searchText, commentsSize } = useSearchContext();
+  const [postId, setPostId] = useState({});
+  const { searchText } = useSearchContext();
   const [theModal, setTheModal] = useState(null);
   const [selectedPostId, setSelectedPostId] = useState(null);
   const [selectedCommentId, setSelectedCommentId] = useState(null);
@@ -57,6 +58,7 @@ export default function Feed({ className }) {
         setIsFeedLoading(false);
       });
   }, []);
+
   const filteredPosts = feedData.filter((post) =>
     post.content.toLowerCase().includes(searchText.toLowerCase())
   );
@@ -218,7 +220,16 @@ export default function Feed({ className }) {
 
               <div id="interaction-display">
                 <p>{0} Likes</p> &bull;
-                <p>{0} Comments</p>
+                <p>
+                  {
+                    comments?.filter((comment) => comment.postId === post?._id)
+                      .length
+                  }{" "}
+                  {comments?.filter((comment) => comment.postId === post?._id)
+                    .length > 1
+                    ? "Comments"
+                    : "Comment"}
+                </p>
                 {commentDisplayStates[post?._id] ? (
                   <BiSolidDownArrow
                     style={{ cursor: "pointer" }}
