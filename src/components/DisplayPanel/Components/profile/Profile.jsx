@@ -2,7 +2,7 @@ import styled from "styled-components";
 import avatar from "/images/avatar.jpg";
 import ToggleButton from "../../../ToggleButton/ToggleButton";
 import "./profile.scss";
-import ProfileFeed from "./profileFeed";
+import ProfileFeed from "./ProfileFeed";
 import { useContext } from "react";
 import { UserContext } from "../../../../Context/Context";
 
