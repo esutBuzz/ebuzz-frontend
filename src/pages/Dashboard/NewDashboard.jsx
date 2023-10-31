@@ -13,14 +13,14 @@ const DashboardDisplay = styled.main`
   display: flex;
   align-items: flex-start;
   overflow: hidden;
-`
+`;
 
 function NewDashboard() {
   const [IsDisplay, setIsDisplay] = useState(true);
 
-  const toggleDisplay =(data)=>{
+  const toggleDisplay = (data) => {
     setIsDisplay(data);
-  }
+  };
   const [activeComponent, setActiveComponent] = useState("My profile");
 
   const handleToggleClick = (componentName) => {
@@ -33,11 +33,14 @@ function NewDashboard() {
   };
   return (
     <DashboardDisplay>
-      <SideBar handle={handleToggleClick}  toggleDisplay={toggleDisplay}/>
+      <SideBar handle={handleToggleClick} toggleDisplay={toggleDisplay} />
       {IsDisplay ? (
         <>
           <NewFeed />
-          <NewDisplaypanel activeComponent={activeComponent} toggleDisplay={toggleDisplay}  />
+          <NewDisplaypanel
+            activeComponent={activeComponent}
+            toggleDisplay={toggleDisplay}
+          />
         </>
       ) : (
         <>
