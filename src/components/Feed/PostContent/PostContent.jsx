@@ -149,6 +149,14 @@ export default function PostContent() {
         showToast("Post made successfully, please refresh");
       } catch (error) {
         setIsPostLoading(false);
+        toast.error("An error occurred", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
       } finally {
         setIsPostLoading(false);
       }
