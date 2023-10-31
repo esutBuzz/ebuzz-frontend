@@ -6,6 +6,8 @@ import MDAccessibility from "../../components/LandingPageComponents/MDAccessibil
 import Posting from "../../components/LandingPageComponents/Posting"
 import Features from "../../components/LandingPageComponents/Features"
 import Groups from "../../components/LandingPageComponents/Groups"
+import { Contact, Help } from "../../components/LandingPageComponents/ContactHelp"
+import Footer from "../../components/Footer/Footer"
 
 const LandingDisplay = styled.main`
     position: relative;
@@ -25,6 +27,9 @@ export default function Landing() {
             <MDAccessibility />
             <Groups />
             <Features />
+            <Contact />
+            <Help />
+            <Footer />
         </LandingDisplay>
     )
 }

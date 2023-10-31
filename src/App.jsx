@@ -5,9 +5,11 @@ import Login from "./pages/Login/Login";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import Landing from "./pages/Landing/Landing";
 import SettingDetail from "./components/DisplayPanel/Components/setting/settingDetail/SettingDetail";
-import NewDashboard from "./pages/Dashboard/newDashboard";
+import NewDashboard from "./pages/Dashboard/NewDashboard";
+import SideBar from "./SideBar/SideBar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SettingBody from "./SettingBody/SettingBody";
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/dashboard" element={<NewDashboard />} />
           <Route path="/setting" element={<SettingDetail />} />
+          <Route path="/settingbody" element={<SettingBody />} />
         </Routes>
       </Router>
     </>

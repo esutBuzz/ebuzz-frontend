@@ -1,16 +1,13 @@
-import {
-  OnboardingDisplay,
-  FormElement,
-} from "../../StyledComponents/Onboarding";
-import image from "/images/login-img.svg";
-import icon from "/images/icon.svg";
-import FormInput from "../../components/FormInput/FormInput";
-import PageButton from "../../components/PageButton/PageButton";
-import ToggleButton from "../../components/ToggleButton/ToggleButton";
-import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
-import axios from "axios";
-import { BaseUrl } from "../../components/BaseUrl";
+import { OnboardingDisplay, FormElement } from '../../StyledComponents/Onboarding'
+import image from '/images/login-img.svg'
+import logo from '/icons/ebuzz-logo.png'
+import FormInput from '../../components/FormInput/FormInput'
+import PageButton from '../../components/PageButton/PageButton'
+import ToggleButton from '../../components/ToggleButton/ToggleButton'
+import { useNavigate } from 'react-router-dom'
+import React,{useState} from "react";
+import axios from 'axios'
+import { BaseUrl } from '../../components/BaseUrl'
 
 export default function Login() {
   const navigate = useNavigate();
@@ -112,30 +109,27 @@ export default function Login() {
 
   return (
     <OnboardingDisplay>
-      <FormElement action="" onSubmit={handleSubmit}>
-        <h3>
-          <img src={icon} alt="E-BUZZ" />
-          E-BUZZ
-        </h3>
-        <section>
-          <h2>Log into your account</h2>
-          <FormInput
-            type="email"
-            title="Email"
-            className="user email"
-            id="email"
-            onChange={(value) => handleInputChange("email", value)}
-            userInfo={userInfo.email}
-          />
+        <FormElement action="" onSubmit={handleSubmit}>
+            <img src={logo} alt="ebuzz logo" />
+          <section>
+              <h2>Log into your account</h2>
+              <FormInput
+               type="email" 
+               title="Email" 
+               className="user email" 
+               id='email'
+               onChange={(value) => handleInputChange('email', value)} 
+               userInfo={userInfo.email}
+               />
 
-          <FormInput
-            type="password"
-            title="Your Password"
-            className="user password"
-            id="password"
-            onChange={(value) => handleInputChange("password", value)}
-            userInfo={userInfo.password}
-          />
+              <FormInput
+               type="password"
+                title="Your Password"
+                 className="user password" 
+                 id='password' 
+                 onChange={(value) => handleInputChange('password', value)}
+                 userInfo={userInfo.password}
+                 />
 
           <aside>
             <span>

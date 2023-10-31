@@ -1,0 +1,21 @@
+{
+    "product": [
+        "Video uploads", "Photo uploads", "Communities", "Events", "Connect"
+    ],
+
+    "eBuzz": [
+        "Desktop", "Mobile", "Tablet"
+    ],
+
+    "company": [
+        "About us", "Partners", "Customers", "Contact us"
+    ],
+
+    "legal": [
+        "Terms", "Privacy", "Cookies"
+    ],
+
+    "socials": [
+        "/icons/Linkedin.svg", "/icons/facebook.svg", "/icons/Twitter.svg" 
+    ]
+}

@@ -6,8 +6,8 @@ import upload from "/images/upload.png";
 import arrow from "/images/icon1.svg";
 import "./settingdetail.scss";
 
-function SettingDetail(className) {
-  const displaySetting = settingData.map((data) => {
+function SettingDetail({settingname,MainData}) {
+  const displaySetting = MainData.map((data) => {
     return (
       <div id="second_main_container">
         <img src={data.icon} alt={data.icon} />
@@ -21,11 +21,11 @@ function SettingDetail(className) {
   });
 
   return (
-    <div className={className}>
+    <div>
       <section id="setting_detail_container">
         <div>
           <div id="detail_first_container">
-            <h3>Your account</h3>
+            <h3>{settingname}</h3>
           </div>
           <div id="detail_second_container">{displaySetting}</div>
         </div>
@@ -36,29 +36,3 @@ function SettingDetail(className) {
 
 export default SettingDetail;
 
-const settingData = [
-  {
-    name: "Your account",
-    icon: contact,
-    image: arrow,
-    text: "Lorem ipsum dolor sit amet consectetur. Porta tellus diam sem",
-  },
-  {
-    name: "Change password ",
-    icon: key,
-    image: arrow,
-    text: "Lorem ipsum dolor sit amet consectetur. Porta tellus diam sem",
-  },
-  {
-    name: "Download your data ",
-    icon: upload,
-    image: arrow,
-    text: "Lorem ipsum dolor sit amet consectetur. Porta tellus diam sem",
-  },
-  {
-    name: "Deactivate your account ",
-    icon: heart,
-    image: arrow,
-    text: "Lorem ipsum dolor sit amet consectetur. Porta tellus diam sem",
-  },
-];

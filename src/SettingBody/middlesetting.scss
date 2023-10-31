@@ -1,0 +1,79 @@
+@import'../App.scss';
+
+#settingCon{
+    border-left:2px solid $gray;
+    border-right:2px solid $gray;
+    width:500px;
+    height: 100vh;
+            padding: 0em;
+        h3{
+            margin: 1.25em 0em;
+            padding:0em 1em;
+        }
+
+        #second_container{
+            margin: 0em 1em;
+            div{
+    
+                display: flex;
+                align-items: center;
+                gap: 0.2em;
+                background:$lt-white;
+                width: 80%;
+                padding: 0.5em 0.5em;
+                border-radius: 0.3em;
+                margin: 1.875em  0em;
+    
+           
+                input{
+                    outline: none;
+                    border: none;
+                    background: $lt-white;
+                    font-size: $small-text;
+                    font-family: $font;
+                }
+            }
+        }
+    #Setting_info_container{
+       
+           
+        .setting-btns{
+            position: relative;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 0;
+            padding:1em;
+            font-size: $text;
+            font-family: $font;
+            &.activated{
+                background: $lt-gray;
+                color: $black;
+
+                
+                &::before{
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    right:0;
+                    width: 1%;
+                    height: 100%;
+                    background: $brown;
+                }
+            
+            
+            }
+
+                
+            
+            
+            
+            
+            }
+
+
+                
+        
+    }
+}
