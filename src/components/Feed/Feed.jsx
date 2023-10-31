@@ -21,6 +21,7 @@ export default function Feed({ className }) {
   //here is where the querry handling would be done
   const { posts, addPost, totalComments, totalLikes, comments } =
     useContext(UserContext);
+
   const fetchurl = `https://ebuzz.onrender.com/api/v1/users/posts/allPosts`;
   // const { data, isLoadingFetch, errorFetch } = useFetch(fetchurl);
   const [feedData, setFeedData] = useState([]);
@@ -42,6 +43,7 @@ export default function Feed({ className }) {
       .then((data) => {
         setFeedData(data);
         addPost(data);
+
         localStorage.setItem("feed", data);
         setIsFeedLoading(false);
       })
@@ -62,11 +64,6 @@ export default function Feed({ className }) {
       setTheModal(id);
     }
   };
-
-  function togglePostComment(postId) {
-    setSelectedPostId(postId);
-    setPostCommentVisible(!isPostCommentVisible);
-  }
 
   function closePostComment() {
     setSelectedPostId(null);

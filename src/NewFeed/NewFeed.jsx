@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Search from "./sub-feed/Search";
 import MainFeed from "./sub-feed/MainFeed";
-import './newFeed.scss'
+import "./newFeed.scss";
 
 function NewFeed() {
   return (

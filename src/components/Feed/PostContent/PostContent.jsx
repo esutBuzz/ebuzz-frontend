@@ -9,6 +9,7 @@ import { UserContext } from "../../../Context/Context";
 import Event from "../Events/PostEvent";
 import axios from "axios";
 import { BaseUrl } from "../../BaseUrl";
+import { toast } from "react-toastify";
 const items = [
   {
     id: 1,
@@ -43,7 +44,12 @@ export default function PostContent() {
   const { addPost } = useContext(UserContext);
 
   // const { response, error, isLoading } = usePost(posturl, formData);
-
+  function showToast(message) {
+    toast.info(message, {
+      position: "top-right", // Position of the toast container
+      autoClose: 3000, // Auto-close duration in milliseconds
+    });
+  }
   function handleModalActive() {
     setActive(!active);
   }
@@ -140,7 +146,10 @@ export default function PostContent() {
             },
           }
         );
+        showToast("Post made successfully, please refresh");
       } catch (error) {
+        setIsPostLoading(false);
+      } finally {
         setIsPostLoading(false);
       }
       setIsPostLoading(false);
