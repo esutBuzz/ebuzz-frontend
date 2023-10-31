@@ -1,0 +1,100 @@
+@import '../../App.scss';
+
+footer{
+    position: relative;
+    width: $width;
+    background: $dk-brown;
+    padding: 2em 3em;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    main{
+        position: relative;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3em;
+
+        img{
+            position: relative;
+            width: 40%;
+        }
+
+        span{
+            position: relative;
+            border-radius: $small-radius;
+            display: flex;
+            align-items: center;
+            border: 0.05em solid rgba($white, 1);
+    
+            .user-btn{
+                color: $white;
+                border-radius: 0;
+                padding: .5em 1.5em;
+    
+                &:last-child{
+                    border-left: 0.02em solid $white;
+                }
+            }
+        }
+    }
+
+    aside{
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        section{
+            position: relative;
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 4em;
+            flex-wrap: wrap;
+            padding: 0 0 2em 0;
+
+            ul{
+                flex-basis: 10em;
+                flex-grow: 1;
+                list-style: none;
+                color: $white;
+
+                li{
+                    color: rgba($white, 0.5);
+                }
+            }
+        }
+
+        menu{
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2em 0;
+            border-top: 0.02em solid rgba($white, 0.4);
+
+            article{
+                position: relative;
+                display: flex;
+                gap: 2em;
+                color: $white;
+            }
+
+            aside{
+                position: relative;
+                width: max-content;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 1em;
+            }
+        }
+    }
+}
